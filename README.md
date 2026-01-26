@@ -9,7 +9,7 @@
 
 ## 🌐 Demo en Vivo
 
-Visita el portfolio en: **[https://wenqianghe.github.io/Portfolio/](https://wenqianghe.github.io/Portfolio/)**
+Visita el portfolio en: **[https://wenqianghe.github.io/Portfolio/](https://wenqianghe.github.io/portfolio/)**
 
 ## ✨ Características
 

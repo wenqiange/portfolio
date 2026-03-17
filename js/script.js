@@ -1,8 +1,5 @@
-/* =====================================================
-   SCRIPT.JS - Minecraft Portfolio JavaScript
-   ===================================================== */
 
-// ============== DOM ELEMENTS ==============
+
 const sections = document.querySelectorAll('.section');
 const navDots = document.querySelectorAll('.nav-dot');
 const dayNightToggle = document.getElementById('dayNightToggle');
@@ -13,15 +10,14 @@ const creeperSound = document.getElementById('creeperSound');
 const particlesContainer = document.getElementById('particles');
 const creeper = document.getElementById('creeper');
 const creeperPopup = document.getElementById('creeperPopup');
+const scrollIndicator = document.querySelector('.scroll-indicator');
 
-// ============== STATE ==============
 let isNightMode = false;
 let isSoundOn = false;
 let currentLang = 'es';
 let hasAnimatedSections = new Set();
 let creeperFound = false;
 
-// ============== TRANSLATIONS ==============
 const translations = {
     es: {
         greeting: "Hola, soy",
@@ -49,14 +45,10 @@ const translations = {
     }
 };
 
-// ============== LANGUAGE TOGGLE ==============
-/**
- * Changes the language of the page
- */
+
 function toggleLanguage() {
     currentLang = currentLang === 'es' ? 'en' : 'es';
     
-    // Update button display
     const langEs = langToggle.querySelector('.lang-es');
     const langEn = langToggle.querySelector('.lang-en');
     
@@ -68,16 +60,12 @@ function toggleLanguage() {
         langEn.style.display = 'none';
     }
     
-    // Apply translations
     applyTranslations();
     
-    // Save preference
     localStorage.setItem('language', currentLang);
 }
 
-/**
- * Applies translations to all elements with data-i18n attribute
- */
+
 function applyTranslations() {
     const elements = document.querySelectorAll('[data-i18n]');
     
@@ -93,45 +81,31 @@ if (langToggle) {
     langToggle.addEventListener('click', toggleLanguage);
 }
 
-// ============== INTERSECTION OBSERVER FOR SECTIONS ==============
-/**
- * Creates an IntersectionObserver to handle section visibility
- * and trigger fade-in/fade-out animations
- */
+
 const sectionObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         const section = entry.target;
         const sectionId = section.id;
         
         if (entry.isIntersecting) {
-            // Section is visible
             section.classList.add('visible');
             updateNavDots(sectionId);
             
-            // Mark section as animated
             hasAnimatedSections.add(sectionId);
         } else {
-            // Only remove visible class if we want continuous animation
-            // For "animate once" behavior, comment out the line below
-            // section.classList.remove('visible');
         }
     });
 }, {
-    root: null, // viewport
-    rootMargin: '-10% 0px -10% 0px', // trigger when section is 10% into viewport
-    threshold: 0.3 // 30% of section must be visible
+    root: null, 
+    rootMargin: '-10% 0px -10% 0px', 
+    threshold: 0.3 
 });
 
-// Observe all sections
 sections.forEach(section => {
     sectionObserver.observe(section);
 });
 
-// ============== NAVIGATION DOTS ==============
-/**
- * Updates the active state of navigation dots
- * @param {string} activeSectionId - ID of the currently active section
- */
+
 function updateNavDots(activeSectionId) {
     navDots.forEach(dot => {
         const dotSection = dot.dataset.section;
@@ -145,7 +119,6 @@ function updateNavDots(activeSectionId) {
     });
 }
 
-// Navigation dot click handlers
 navDots.forEach(dot => {
     dot.addEventListener('click', () => {
         const targetSection = dot.dataset.section;
@@ -159,7 +132,6 @@ navDots.forEach(dot => {
         }
     });
     
-    // Keyboard accessibility
     dot.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
             e.preventDefault();
@@ -168,15 +140,11 @@ navDots.forEach(dot => {
     });
 });
 
-// ============== DAY/NIGHT MODE ==============
-/**
- * Toggles between day and night mode
- */
+
 function toggleDayNight() {
     isNightMode = !isNightMode;
     document.body.classList.toggle('night-mode', isNightMode);
     
-    // Update toggle button icons
     const sunIcon = dayNightToggle.querySelector('.sun-icon');
     const moonIcon = dayNightToggle.querySelector('.moon-icon');
     
@@ -190,27 +158,20 @@ function toggleDayNight() {
         dayNightToggle.setAttribute('aria-label', 'Cambiar a modo noche');
     }
     
-    // Update particles for night mode
     updateParticlesForMode();
     
-    // Save preference
     localStorage.setItem('nightMode', isNightMode);
 }
 
 dayNightToggle.addEventListener('click', toggleDayNight);
 
-// ============== SOUND TOGGLE ==============
-/**
- * Toggles ambient sound on/off
- */
+
 function toggleSound() {
     isSoundOn = !isSoundOn;
     updateSoundUI();
 }
 
-/**
- * Updates sound UI and plays/pauses music
- */
+
 function updateSoundUI() {
     const soundOnIcon = soundToggle.querySelector('.sound-on');
     const soundOffIcon = soundToggle.querySelector('.sound-off');
@@ -230,18 +191,13 @@ function updateSoundUI() {
         soundToggle.setAttribute('aria-label', 'Activar sonido');
     }
     
-    // Save preference
     localStorage.setItem('soundOn', isSoundOn);
 }
 
 soundToggle.addEventListener('click', toggleSound);
 
-// ============== PARTICLES SYSTEM ==============
-/**
- * Creates floating particles for ambient effect
- */
+
 function createParticles() {
-    // Clear existing particles
     particlesContainer.innerHTML = '';
     
     const particleCount = window.innerWidth < 768 ? 15 : 30;
@@ -250,16 +206,12 @@ function createParticles() {
         const particle = document.createElement('div');
         particle.classList.add('particle');
         
-        // Random position
         particle.style.left = `${Math.random() * 100}%`;
         
-        // Random delay
         particle.style.animationDelay = `${Math.random() * 10}s`;
         
-        // Random duration
         particle.style.animationDuration = `${8 + Math.random() * 6}s`;
         
-        // Random size (pixelated)
         const size = (Math.floor(Math.random() * 3) + 1) * 4;
         particle.style.width = `${size}px`;
         particle.style.height = `${size}px`;
@@ -268,76 +220,58 @@ function createParticles() {
     }
 }
 
-/**
- * Updates particle colors based on day/night mode
- */
+
 function updateParticlesForMode() {
     const particles = particlesContainer.querySelectorAll('.particle');
     
     particles.forEach(particle => {
         if (isNightMode) {
-            // Night mode: stars/sparkles
             particle.style.backgroundColor = `rgba(255, 255, 255, ${0.4 + Math.random() * 0.4})`;
             particle.style.boxShadow = '0 0 4px rgba(255, 255, 255, 0.5)';
         } else {
-            // Day mode: pollen/dust
             particle.style.backgroundColor = `rgba(255, 255, 255, ${0.3 + Math.random() * 0.3})`;
             particle.style.boxShadow = 'none';
         }
     });
 }
 
-// Initialize particles
 createParticles();
 
-// Recreate particles on resize
 let resizeTimeout;
 window.addEventListener('resize', () => {
     clearTimeout(resizeTimeout);
     resizeTimeout = setTimeout(createParticles, 250);
 });
 
-// ============== CREEPER EASTER EGG ==============
-/**
- * Easter egg: Creeper interaction with explosion, sound and popup
- */
+
 if (creeper) {
     creeper.addEventListener('click', () => {
-        // Only trigger once
         if (creeperFound) return;
         creeperFound = true;
         
-        // Play explosion sound
         if (creeperSound) {
             creeperSound.currentTime = 0;
             creeperSound.volume = 0.5;
             creeperSound.play().catch(e => console.log('Sound blocked:', e));
         }
         
-        // Add explosion animation class
         creeper.classList.add('exploding');
         
-        // Create explosion effect
         createExplosion(creeper);
         
-        // Show popup after short delay
         setTimeout(() => {
             showCreeperPopup();
         }, 400);
         
-        // Hide creeper permanently
         setTimeout(() => {
             creeper.style.display = 'none';
         }, 800);
     });
 }
 
-/**
- * Shows the creeper found popup for 3 seconds
- */
+
 function showCreeperPopup() {
     if (creeperPopup) {
-        // Update text based on language
         const popupText = creeperPopup.querySelector('.popup-text');
         if (popupText && translations[currentLang].creeper_found) {
             popupText.textContent = translations[currentLang].creeper_found;
@@ -345,23 +279,18 @@ function showCreeperPopup() {
         
         creeperPopup.classList.remove('hidden');
         
-        // Hide popup after 3 seconds
         setTimeout(() => {
             creeperPopup.classList.add('hidden');
         }, 3000);
     }
 }
 
-/**
- * Creates explosion particle effect
- * @param {HTMLElement} element - The element to explode from
- */
+
 function createExplosion(element) {
     const rect = element.getBoundingClientRect();
     const centerX = rect.left + rect.width / 2;
     const centerY = rect.top + rect.height / 2;
     
-    // Create explosion particles
     for (let i = 0; i < 20; i++) {
         const particle = document.createElement('div');
         particle.style.cssText = `
@@ -378,7 +307,6 @@ function createExplosion(element) {
         
         document.body.appendChild(particle);
         
-        // Animate particle
         const angle = (Math.PI * 2 / 20) * i;
         const velocity = 100 + Math.random() * 100;
         const vx = Math.cos(angle) * velocity;
@@ -390,7 +318,7 @@ function createExplosion(element) {
         
         function animateParticle() {
             x += vx * 0.02;
-            y += vy * 0.02 + 2; // Add gravity
+            y += vy * 0.02 + 2; 
             opacity -= 0.02;
             
             particle.style.transform = `translate(${x}px, ${y}px)`;
@@ -407,21 +335,14 @@ function createExplosion(element) {
     }
 }
 
-/**
- * Returns a random Minecraft explosion color
- * @returns {string} - Hex color code
- */
+
 function getRandomExplosionColor() {
     const colors = ['#4CAF50', '#8BC34A', '#CDDC39', '#FFEB3B', '#FFC107', '#808080'];
     return colors[Math.floor(Math.random() * colors.length)];
 }
 
-// ============== KEYBOARD NAVIGATION ==============
-/**
- * Handle keyboard navigation for accessibility
- */
+
 document.addEventListener('keydown', (e) => {
-    // Arrow keys for section navigation
     if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
         e.preventDefault();
         
@@ -447,10 +368,7 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-// ============== LAZY LOADING FOR IMAGES ==============
-/**
- * Lazy load images when they come into view
- */
+
 const imageObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -466,91 +384,80 @@ const imageObserver = new IntersectionObserver((entries) => {
     rootMargin: '50px'
 });
 
-// Observe images with data-src attribute
 document.querySelectorAll('img[data-src]').forEach(img => {
     imageObserver.observe(img);
 });
 
-// ============== REDUCED MOTION PREFERENCE ==============
-/**
- * Check and respect user's reduced motion preference
- */
+
 function checkReducedMotion() {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     
     if (prefersReducedMotion) {
-        // Disable animations
         document.documentElement.style.setProperty('--transition-fast', '0ms');
         document.documentElement.style.setProperty('--transition-normal', '0ms');
         document.documentElement.style.setProperty('--transition-slow', '0ms');
         
-        // Show all sections immediately
         sections.forEach(section => {
             section.classList.add('visible');
         });
         
-        // Remove particles
         particlesContainer.innerHTML = '';
     }
 }
 
 checkReducedMotion();
 
-// ============== LOAD SAVED PREFERENCES ==============
-/**
- * Load user preferences from localStorage
- */
+
+function hideScrollIndicatorOnFirstScroll() {
+    if (!scrollIndicator) return;
+
+    if (window.scrollY > 0) {
+        scrollIndicator.classList.add('is-hidden');
+        window.removeEventListener('scroll', hideScrollIndicatorOnFirstScroll);
+    }
+}
+
+
 function loadPreferences() {
-    // Night mode preference
     const savedNightMode = localStorage.getItem('nightMode');
     if (savedNightMode === 'true') {
         toggleDayNight();
     }
     
-    // Language preference
     const savedLang = localStorage.getItem('language');
     if (savedLang && savedLang !== currentLang) {
         toggleLanguage();
     }
     
-    // Note: Sound preference is not auto-applied due to browser restrictions
 }
 
-// ============== INITIALIZATION ==============
-/**
- * Initialize the portfolio
- */
+
 function init() {
-    // Load preferences
     loadPreferences();
     
-    // Make first section visible immediately
     if (sections[0]) {
         sections[0].classList.add('visible');
         hasAnimatedSections.add(sections[0].id);
     }
     
-    // Update particles for initial mode
     updateParticlesForMode();
     
-    // Apply initial translations
     applyTranslations();
+
+    hideScrollIndicatorOnFirstScroll();
+    window.addEventListener('scroll', hideScrollIndicatorOnFirstScroll, { passive: true });
     
-    // Start music automatically (will require user interaction due to browser policies)
     startAmbientMusic();
     
     console.log('🎮 Minecraft Portfolio initialized!');
     console.log('💡 Tip: Click on the Creeper for a surprise!');
 }
 
-/**
- * Start ambient music automatically
- */
+
 function startAmbientMusic() {
     isSoundOn = true;
     updateSoundUI();
     
-    // Also try to play on first user interaction if autoplay is blocked
     const startOnInteraction = () => {
         if (isSoundOn && ambientSound.paused) {
             ambientSound.play().catch(() => {});
@@ -565,17 +472,13 @@ function startAmbientMusic() {
     document.addEventListener('scroll', startOnInteraction);
 }
 
-// Run initialization when DOM is ready
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
 } else {
     init();
 }
 
-// ============== SMOOTH SCROLL POLYFILL (if needed) ==============
-/**
- * Simple smooth scroll fallback for older browsers
- */
+
 if (!('scrollBehavior' in document.documentElement.style)) {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {

@@ -1,98 +1,70 @@
-# 🎮 Minecraft Portfolio - Wenqiang He
+# Portfolio - Wenqiang He
 
-![Minecraft Theme](https://img.shields.io/badge/Theme-Minecraft-green)
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
+Portfolio personal desarrollado con HTML, CSS y JavaScript vanilla, con una temática visual inspirada en Minecraft. El sitio es responsive, accesible y no depende de frameworks ni librerías externas.
 
-> Un portfolio personal único con temática de Minecraft, construido con HTML, CSS y JavaScript vanilla.
+## Demo
 
-## 🌐 Demo en Vivo
+Disponible en: [https://wenqiange.github.io/portfolio/](https://wenqiange.github.io/portfolio/)
 
-Visita el portfolio en: **[https://wenqiange.github.io/Portfolio/](https://wenqiange.github.io/portfolio/)**
+## Características
 
-## ✨ Características
+### Diseño
+- Estética pixel-art con tipografías Press Start 2P y VT323.
+- Paleta de colores inspirada en Minecraft (hierba, tierra, piedra).
+- Elementos decorativos y texturas generadas íntegramente con CSS.
 
-### 🎨 Diseño Visual
-- **Estética Pixelada**: Fuentes pixel-art (Press Start 2P) y elementos con bordes gruesos
-- **Paleta Minecraft**: Colores inspirados en el juego (verde hierba, marrón tierra, gris piedra)
-- **Bloques Decorativos**: Animaciones de bloques flotantes estilo Minecraft
-- **Texturas CSS**: Patrones de bloques creados con CSS puro
+### Interacción
+- Transiciones de secciones con fade-in mediante la IntersectionObserver API.
+- Sistema de partículas ambientales.
+- Efectos hover en las tarjetas de proyecto.
+- Modo día/noche con persistencia en localStorage.
+- Soporte multidioma (español / inglés).
+- Control de audio ambiente.
 
-### 🔄 Animaciones
-- **Scroll Fade**: Secciones con fade-in/out usando IntersectionObserver API
-- **Partículas Flotantes**: Sistema de partículas ambient
-- **Hover Effects**: Efectos de selección de bloque en cards
-- **Bloques Animados**: Elementos decorativos con animación de flotación
+### Accesibilidad
+- Contraste conforme a WCAG AA y navegación por teclado.
+- Soporte de `prefers-reduced-motion`.
+- Etiquetas ARIA e indicadores de foco visibles.
 
-### 🌓 Modos y Extras
-- **Modo Día/Noche**: Toggle para cambiar entre temas claro y oscuro
-- **Control de Sonido**: Opción para activar sonido ambiente
-- **Easter Egg**: ¡Haz clic en el Creeper para una sorpresa! 💥
+### Responsive
+- Diseño mobile-first con breakpoints para móvil, tablet y escritorio.
 
-### ♿ Accesibilidad
-- **WCAG AA Compliant**: Contraste adecuado y navegación por teclado
-- **Reduced Motion**: Respeta preferencias de movimiento reducido
-- **ARIA Labels**: Etiquetas descriptivas para lectores de pantalla
-- **Focus Visible**: Indicadores claros de foco
-
-### 📱 Responsive
-- **Mobile-First**: Diseño optimizado para móviles
-- **Breakpoints**: 
-  - Mobile: < 768px
-  - Tablet: 768px - 1024px
-  - Desktop: > 1024px
-
-## 📁 Estructura del Proyecto
+## Estructura del proyecto
 
 ```
-Portfolio/
+portfolio/
 ├── index.html          # Estructura HTML principal
 ├── css/
 │   ├── style.css       # Estilos globales y layout
-│   └── minecraft.css   # Estilos temáticos Minecraft
+│   └── minecraft.css   # Estilos temáticos
 ├── js/
-│   └── script.js       # Lógica de scroll, animaciones y interactividad
+│   └── script.js       # Lógica de scroll, animaciones e interactividad
 ├── assets/
-│   ├── images/         # Imágenes de proyectos (agregar las tuyas)
-│   └── textures/       # Texturas adicionales (opcional)
-└── README.md           # Este archivo
+│   ├── images/         # Imágenes de proyectos
+│   └── textures/       # Texturas adicionales
+└── README.md
 ```
 
-## 🎮 Easter Eggs
+## Tecnologías
 
-1. **Creeper**: Busca el Creeper semi-transparente en la sección de contacto. ¡Haz clic para ver qué pasa!
-2. **Consola**: Abre la consola del navegador para ver mensajes especiales.
+- **HTML5**: estructura semántica.
+- **CSS3**: variables, Flexbox, Grid, animaciones `@keyframes` y patrones sin imágenes.
+- **JavaScript (vanilla)**: IntersectionObserver API, localStorage y gestión de eventos.
 
-## 📝 Tecnologías Utilizadas
+## Ejecución local
 
-- **HTML5**: Estructura semántica
-- **CSS3**: 
-  - Variables CSS
-  - Flexbox & Grid
-  - Animaciones @keyframes
-  - Patrones CSS (sin imágenes)
-- **JavaScript Vanilla**:
-  - IntersectionObserver API
-  - LocalStorage para preferencias
-  - Event Listeners
+Al tratarse de un sitio estático, basta con clonar el repositorio y abrir `index.html` en el navegador. Para evitar restricciones del protocolo `file://`, se recomienda servirlo con un servidor local:
 
-## 🤝 Contribuciones
+```bash
+python -m http.server 8000
+```
 
-¡Las sugerencias y mejoras son bienvenidas! 
+Y acceder a `http://localhost:8000`.
 
-1. Fork el repositorio
-2. Crea una rama (`git checkout -b feature/mejora`)
-3. Commit tus cambios (`git commit -m 'Añade nueva característica'`)
-4. Push a la rama (`git push origin feature/mejora`)
-5. Abre un Pull Request
+## Licencia
 
-## 📄 Licencia
-
-Este proyecto está bajo la Licencia MIT. Siéntete libre de usarlo y modificarlo.
+Distribuido bajo la Licencia MIT.
 
 ---
 
-**Crafteado con ❤️ por Wenqiang He © 2026**
-
-*"El límite es tu imaginación"* 🎮
+Wenqiang He © 2026

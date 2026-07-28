@@ -85,15 +85,36 @@ export const chatOptions = [
           links: [{ label: "GitHub", url: "https://github.com/wenqiange/tribus" }],
         },
         {
-          icon: "🗡️",
-          name: "Looty Dungeon",
-          stack: ["Godot Engine", "GDScript"],
+          icon: "🧰",
+          name: "Toolsy",
+          stack: [
+            "TypeScript",
+            "React",
+            "Next.js",
+            "Node.js",
+            "HTML",
+            "CSS",
+            "qrcode",
+            "Canvas API",
+            "Web Crypto API",
+          ],
           description:
-            "Videojuego 3D isometrico de mazmorra desarrollado en Godot.",
+            "Plataforma web de micro-herramientas rapidas y utilitarias, pensada para resolver tareas concretas desde una sola interfaz limpia. En su MVP incluye formateador de JSON, generador de contrasenas, generador de QR y compresor de imagenes, con una arquitectura modular preparada para crecer con nuevas herramientas.",
+          experience: [
+            "Arquitectura modular para herramientas web",
+            "Procesamiento client-side sin backend",
+            "Generacion de QR y utilidades de navegador",
+            "Uso de Canvas y Web Crypto API",
+            "Diseno de UX limpia para tareas rapidas",
+          ],
           links: [
             {
+              label: "Web",
+              url: "https://toolsy-dun.vercel.app/",
+            },
+            {
               label: "GitHub",
-              url: "https://github.com/wenqiange/Looty-Dungeon-Recreation",
+              url: "https://github.com/wenqiange/Toolsy",
             },
           ],
         },

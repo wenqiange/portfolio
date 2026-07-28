@@ -1,12 +1,13 @@
 import { useEffect, useMemo, useRef, useState } from "react"
 import ChatWindow from "./components/ChatWindow"
 import Sidebar from "./components/Sidebar"
-import { chatOptions, welcomeData } from "./data/chatData"
+import { chatOptions, uiText, welcomeData } from "./data/chatData"
 
 function App() {
   const [messages, setMessages] = useState([])
   const [activeId, setActiveId] = useState(null)
   const [isTyping, setIsTyping] = useState(false)
+  const [lang, setLang] = useState("es")
   const [isSidebarOpen, setIsSidebarOpen] = useState(window.innerWidth >= 768)
   const [isDark, setIsDark] = useState(
     window.matchMedia("(prefers-color-scheme: dark)").matches
@@ -15,10 +16,38 @@ function App() {
   const chatScrollRef = useRef(null)
   const typingTimeoutRef = useRef(null)
   const streamIntervalRef = useRef(null)
+  const didMountRef = useRef(false)
+
+  const localizedOptions = useMemo(
+    () =>
+      chatOptions.map((option) => ({
+        id: option.id,
+        title: option.title[lang],
+        question: option.question[lang],
+        answer: option.answer[lang],
+      })),
+    [lang]
+  )
+
+  const localizedWelcomeData = useMemo(
+    () => ({
+      title: welcomeData.title[lang],
+      subtitle: welcomeData.subtitle[lang],
+    }),
+    [lang]
+  )
+
+  const localizedUiText = useMemo(
+    () =>
+      Object.fromEntries(
+        Object.entries(uiText).map(([key, value]) => [key, value[lang]])
+      ),
+    [lang]
+  )
 
   const optionsById = useMemo(
-    () => Object.fromEntries(chatOptions.map((option) => [option.id, option])),
-    []
+    () => Object.fromEntries(localizedOptions.map((option) => [option.id, option])),
+    [localizedOptions]
   )
 
   useEffect(() => {
@@ -69,6 +98,15 @@ function App() {
       setIsSidebarOpen(false)
     }
   }
+
+  useEffect(() => {
+    if (!didMountRef.current) {
+      didMountRef.current = true
+      return
+    }
+
+    resetChat()
+  }, [lang])
 
   const handleOption = (id) => {
     if (isTyping) return
@@ -123,18 +161,20 @@ function App() {
   return (
     <div className="grid min-h-screen grid-cols-1 bg-[#f6f3ee] text-[#2d2925] dark:bg-[#1b1917] dark:text-[#f3ede5] md:grid-cols-[300px_1fr] md:items-stretch">
       <Sidebar
-        options={chatOptions}
+        options={localizedOptions}
         activeId={activeId}
+        lang={lang}
         isOpen={isSidebarOpen}
         onSelect={handleOption}
         onReset={resetChat}
-        onToggleTheme={() => setIsDark((prev) => !prev)}
+        onChangeLang={setLang}
         onClose={() => setIsSidebarOpen(false)}
+        uiText={localizedUiText}
       />
 
       <button
         type="button"
-        aria-label="Cerrar menu"
+        aria-label={localizedUiText.closeMenu}
         onClick={() => setIsSidebarOpen(false)}
         className={`fixed inset-0 z-10 bg-black/35 transition md:hidden ${
           isSidebarOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
@@ -143,13 +183,14 @@ function App() {
 
       <ChatWindow
         messages={messages}
-        options={chatOptions}
+        options={localizedOptions}
         activeId={activeId}
         isTyping={isTyping}
         onSelect={handleOption}
         onOpenSidebar={() => setIsSidebarOpen(true)}
-        welcomeData={welcomeData}
+        welcomeData={localizedWelcomeData}
         scrollRef={chatScrollRef}
+        uiText={localizedUiText}
       />
     </div>
   )

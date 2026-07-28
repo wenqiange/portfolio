@@ -11,6 +11,7 @@ export default function ChatWindow({
   onOpenSidebar,
   welcomeData,
   scrollRef,
+  uiText,
 }) {
   return (
     <main className="grid min-w-0 grid-rows-[auto_1fr_auto] md:min-h-screen">
@@ -19,11 +20,11 @@ export default function ChatWindow({
           type="button"
           onClick={onOpenSidebar}
           className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-[#e7dfd3] bg-[#f5f0e8] transition hover:bg-[#eee5d8] dark:border-[#38332e] dark:bg-[#2d2823] dark:hover:bg-[#3a342e] md:hidden"
-          aria-label="Abrir menu"
+          aria-label={uiText.openMenu}
         >
           ☰
         </button>
-        <h1 className="m-0 text-[0.95rem] font-semibold tracking-[0.01em]">Chat portfolio</h1>
+        <h1 className="m-0 text-[0.95rem] font-semibold tracking-[0.01em]">{uiText.chatTitle}</h1>
       </header>
 
       <section ref={scrollRef} className="flex flex-col gap-3 px-4 py-8 md:px-[max(6vw,1rem)] lg:px-[max(10vw,2rem)]">
@@ -52,9 +53,9 @@ export default function ChatWindow({
         <input
           type="text"
           disabled
-          placeholder="Elige una opcion arriba..."
+          placeholder={uiText.inputPlaceholder}
           className="w-full rounded-2xl border border-[#e7dfd3] bg-[#fcfaf6] px-4 py-3 text-sm text-[#82796f] outline-none dark:border-[#38332e] dark:bg-[#22201d] dark:text-[#a59d92]"
-          aria-label="Input deshabilitado"
+          aria-label={uiText.disabledInput}
         />
       </footer>
     </main>

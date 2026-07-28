@@ -148,7 +148,7 @@ function RichAssistantContent({ content }) {
           </div>
 
           <section className="rounded-2xl border border-[#eadfce] bg-[#fcf8f2] p-4 dark:border-[#433b33] dark:bg-[#332d28]">
-            <SectionTitle icon="✨">Core skills</SectionTitle>
+            <SectionTitle icon="✨">{content.coreTitle}</SectionTitle>
             <div className="flex flex-wrap gap-2">
               {content.core.map((item) => (
                 <span

@@ -1,11 +1,13 @@
 export default function Sidebar({
   options,
   activeId,
+  lang,
   isOpen,
   onSelect,
   onReset,
-  onToggleTheme,
+  onChangeLang,
   onClose,
+  uiText,
 }) {
   return (
     <aside
@@ -15,13 +17,13 @@ export default function Sidebar({
     >
       <div className="flex items-start justify-between gap-3">
         <div>
-          <p className="m-0 text-[0.92rem] font-semibold tracking-[0.01em]">Wen Portfolio Chat</p>
+          <p className="m-0 text-[0.92rem] font-semibold tracking-[0.01em]">{uiText.appTitle}</p>
         </div>
         <button
           type="button"
           onClick={onClose}
           className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-[#e7dfd3] bg-[#f5f0e8] text-sm transition hover:bg-[#eee5d8] dark:border-[#38332e] dark:bg-[#2d2823] dark:hover:bg-[#3a342e] md:hidden"
-          aria-label="Cerrar menu"
+          aria-label={uiText.closeMenu}
         >
           ✕
         </button>
@@ -32,10 +34,10 @@ export default function Sidebar({
         onClick={onReset}
         className="rounded-xl border border-[#e7dfd3] bg-[#f5f0e8] px-4 py-3 text-left text-sm font-semibold transition hover:bg-[#eee5d8] dark:border-[#38332e] dark:bg-[#2d2823] dark:hover:bg-[#3a342e]"
       >
-        + Nuevo chat
+        {uiText.newChat}
       </button>
 
-      <nav className="flex flex-col gap-2" aria-label="Categorias del portfolio">
+      <nav className="flex flex-col gap-2" aria-label={uiText.categoriesLabel}>
         {options.map((option) => (
           <button
             key={option.id}
@@ -52,13 +54,33 @@ export default function Sidebar({
         ))}
       </nav>
 
-      <button
-        type="button"
-        onClick={onToggleTheme}
-        className="mt-auto rounded-xl border border-[#e7dfd3] bg-[#f5f0e8] px-4 py-3 text-left text-sm font-semibold transition hover:bg-[#eee5d8] dark:border-[#38332e] dark:bg-[#2d2823] dark:hover:bg-[#3a342e]"
-      >
-        Alternar tema
-      </button>
+      <div className="mt-auto">
+        <div
+          className="inline-flex w-fit rounded-full border border-[#e7dfd3] bg-[#f5f0e8] p-1 dark:border-[#38332e] dark:bg-[#2d2823]"
+          role="group"
+          aria-label={uiText.languageSelector}
+        >
+          {["es", "en"].map((value) => {
+            const isActive = lang === value
+
+            return (
+              <button
+                key={value}
+                type="button"
+                onClick={() => onChangeLang(value)}
+                className={`rounded-full px-3 py-1.5 text-sm font-semibold uppercase transition ${
+                  isActive
+                    ? "bg-[#b97338] text-white"
+                    : "text-[#5f554c] hover:bg-[#eee5d8] dark:text-[#d5cbc1] dark:hover:bg-[#3a342e]"
+                }`}
+                aria-pressed={isActive}
+              >
+                {value}
+              </button>
+            )
+          })}
+        </div>
+      </div>
     </aside>
   )
 }

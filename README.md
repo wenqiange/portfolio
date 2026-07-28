@@ -1,70 +1,16 @@
-# Portfolio - Wenqiang He
+# React + Vite
 
-Portfolio personal desarrollado con HTML, CSS y JavaScript vanilla, con una temática visual inspirada en Minecraft. El sitio es responsive, accesible y no depende de frameworks ni librerías externas.
+This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
 
-## Demo
+Currently, two official plugins are available:
 
-Disponible en: [https://wenqiange.github.io/portfolio/](https://wenqiange.github.io/portfolio/)
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-## Características
+## React Compiler
 
-### Diseño
-- Estética pixel-art con tipografías Press Start 2P y VT323.
-- Paleta de colores inspirada en Minecraft (hierba, tierra, piedra).
-- Elementos decorativos y texturas generadas íntegramente con CSS.
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-### Interacción
-- Transiciones de secciones con fade-in mediante la IntersectionObserver API.
-- Sistema de partículas ambientales.
-- Efectos hover en las tarjetas de proyecto.
-- Modo día/noche con persistencia en localStorage.
-- Soporte multidioma (español / inglés).
-- Control de audio ambiente.
+## Expanding the Oxlint configuration
 
-### Accesibilidad
-- Contraste conforme a WCAG AA y navegación por teclado.
-- Soporte de `prefers-reduced-motion`.
-- Etiquetas ARIA e indicadores de foco visibles.
-
-### Responsive
-- Diseño mobile-first con breakpoints para móvil, tablet y escritorio.
-
-## Estructura del proyecto
-
-```
-portfolio/
-├── index.html          # Estructura HTML principal
-├── css/
-│   ├── style.css       # Estilos globales y layout
-│   └── minecraft.css   # Estilos temáticos
-├── js/
-│   └── script.js       # Lógica de scroll, animaciones e interactividad
-├── assets/
-│   ├── images/         # Imágenes de proyectos
-│   └── textures/       # Texturas adicionales
-└── README.md
-```
-
-## Tecnologías
-
-- **HTML5**: estructura semántica.
-- **CSS3**: variables, Flexbox, Grid, animaciones `@keyframes` y patrones sin imágenes.
-- **JavaScript (vanilla)**: IntersectionObserver API, localStorage y gestión de eventos.
-
-## Ejecución local
-
-Al tratarse de un sitio estático, basta con clonar el repositorio y abrir `index.html` en el navegador. Para evitar restricciones del protocolo `file://`, se recomienda servirlo con un servidor local:
-
-```bash
-python -m http.server 8000
-```
-
-Y acceder a `http://localhost:8000`.
-
-## Licencia
-
-Distribuido bajo la Licencia MIT.
-
----
-
-Wenqiang He © 2026
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.

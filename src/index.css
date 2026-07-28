@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "TT Octosquares";
+  src: url("../fonts/font/TT Octosquares Trial Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "TT Octosquares";
+  src: url("../fonts/font/TT Octosquares Trial Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "TT Octosquares";
+  src: url("../fonts/font/TT Octosquares Trial DemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "TT Octosquares";
+  src: url("../fonts/font/TT Octosquares Trial Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@layer base {
+  html,
+  body,
+  #root {
+    @apply min-h-screen;
+  }
+
+  body {
+    @apply m-0 bg-[#f6f3ee] text-[#2d2925] antialiased;
+    font-family: "TT Octosquares", system-ui, sans-serif;
+    letter-spacing: 0.01em;
+  }
+
+  body.dark {
+    @apply bg-[#1b1917] text-[#f3ede5];
+  }
+}

@@ -3,22 +3,18 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
-      keyframes: {
-        pulseDot: {
-          "0%, 80%, 100%": { transform: "scale(0.85)", opacity: "0.45" },
-          "40%": { transform: "scale(1)", opacity: "1" },
-        },
-        slideUp: {
-          from: { transform: "translateY(8px)", opacity: "0" },
-          to: { transform: "translateY(0)", opacity: "1" },
-        },
+      colors: {
+        paper: "rgb(var(--paper) / <alpha-value>)",
+        "paper-deep": "rgb(var(--paper-deep) / <alpha-value>)",
+        line: "rgb(var(--line) / <alpha-value>)",
+        mid: "rgb(var(--mid) / <alpha-value>)",
+        mark: "rgb(var(--mark) / <alpha-value>)",
       },
-      animation: {
-        "pulse-dot": "pulseDot 1.2s infinite",
-        "slide-up": "slideUp 0.26s ease",
+      fontFamily: {
+        display: ['"Barlow Condensed"', "sans-serif"],
+        sans: ["Barlow", "system-ui", "sans-serif"],
       },
     },
   },
   plugins: [],
 }
-

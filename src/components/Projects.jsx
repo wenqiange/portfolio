@@ -1,14 +1,28 @@
 import { useState } from "react"
 import { projects } from "../data/content"
 import Arrow from "./Arrow"
+import CalloutBubble from "./CalloutBubble"
+import DetailDiagram from "./DetailDiagram"
 import DrawingFrame from "./DrawingFrame"
 import RevisionCloud from "./RevisionCloud"
 import Sheet from "./Sheet"
 
-function Detail({ project, copy, ui, open }) {
+function Detail({ project, index, copy, t, open }) {
+  const { ui } = t
+  const title = `${ui.detail} ${index + 1} — ${project.name}`
+
   return (
     <RevisionCloud active={open}>
-      <div className="grid gap-10 border-t border-mid/40 py-8 md:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)] md:gap-12">
+      {/* Ink the drawing each time the detail opens. */}
+      <figure data-state={open ? "inked" : "pencil"} className="border-t border-mid/40 pt-6">
+        <DetailDiagram id={project.id} lang={t.lang} title={title} />
+        <figcaption className="mt-6 flex items-center gap-3">
+          <CalloutBubble top={index + 1} bottom="2" className="h-10 w-10 shrink-0 text-line" />
+          <span className="font-display text-xl font-semibold uppercase leading-none">{title}</span>
+          <span className="label ml-auto">{ui.scale}</span>
+        </figcaption>
+      </figure>
+      <div className="mt-8 grid gap-10 border-t border-mid/40 py-8 md:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)] md:gap-12">
         <div>
           <p className="max-w-[60ch] text-lg leading-relaxed text-line md:text-xl">{copy.description}</p>
           {copy.experience.length > 0 && (
@@ -105,7 +119,7 @@ export default function Projects({ t }) {
                   onClick={() => setOpenId(open ? null : project.id)}
                   className="group grid w-full grid-cols-[3.5rem_minmax(0,1fr)_auto] items-center gap-x-4 py-5 text-left md:grid-cols-[4.5rem_minmax(0,1fr)_minmax(0,16rem)_auto] md:py-6"
                 >
-                  <span className="label tabular-nums">P-0{index + 1}</span>
+                  <CalloutBubble top={index + 1} bottom="2" className={`h-11 w-11 transition-colors md:h-12 md:w-12 ${open ? "text-line" : "text-mid"}`} />
                   <span
                     className={`font-display text-[clamp(2.25rem,6vw,4.5rem)] font-bold uppercase leading-[0.9] transition-colors duration-300 ${
                       open ? "text-line" : "text-mid group-hover:text-line"
@@ -131,7 +145,7 @@ export default function Projects({ t }) {
                 {/* Gutter keeps the revision cloud inside the clipping box. */}
                 <div className="-mx-5 overflow-hidden px-5">
                   <div className="pb-10 pt-6">
-                    <Detail project={project} copy={t.projects.items[project.id]} ui={ui} open={open} />
+                    <Detail project={project} index={index} copy={t.projects.items[project.id]} t={t} open={open} />
                   </div>
                 </div>
               </div>

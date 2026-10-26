@@ -49,7 +49,7 @@ function App() {
 
   return (
     <>
-      <main className="pb-14 xl:pb-0">
+      <main className="pb-28 lg:pb-14 xl:pb-0">
         <Hero t={t} />
         <Projects t={t} />
         <Experience t={t} />

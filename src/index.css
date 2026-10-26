@@ -108,14 +108,17 @@
   .zones-side { top: 0; bottom: 0; left: -0.95rem; flex-direction: column; }
 
   /* Pencil → inked: text starts in construction blue and inks to white. */
+  /* Pencil lettering is an outline in construction blue; inking fills it in. */
   .pencil-text {
-    color: rgb(var(--mid));
-    transition: color 1.2s var(--ease);
+    color: transparent;
+    -webkit-text-stroke: 1px rgb(var(--mid));
+    transition: color 1.1s cubic-bezier(0.65, 0, 0.35, 1) 0.2s, -webkit-text-stroke-color 1.1s cubic-bezier(0.65, 0, 0.35, 1) 0.2s;
   }
 
   [data-state="inked"] .pencil-text,
   [data-state="issued"] .pencil-text {
     color: rgb(var(--line));
+    -webkit-text-stroke-color: transparent;
   }
 
   /* SVG linework. Every inked path uses pathLength="1" so dashes need no measuring. */

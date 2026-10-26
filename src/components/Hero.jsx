@@ -1,42 +1,33 @@
 import { useLayoutEffect, useRef, useState } from "react"
 import { portrait } from "../data/content"
+import { Dimension } from "./Dimension"
 import DrawingFrame from "./DrawingFrame"
 import Sheet from "./Sheet"
 
-function Dimension({ width }) {
-  return (
-    <div aria-hidden="true" className="relative mb-5 h-6" style={{ width: width ?? "100%" }}>
-      <div className="absolute inset-x-0 top-1/2 border-t border-line" />
-      <div className="absolute left-0 top-0 h-full border-l border-line" />
-      <div className="absolute right-0 top-0 h-full border-r border-line" />
-      <span className="absolute left-0 top-1/2 h-3 -translate-x-1/2 -translate-y-1/2 rotate-45 border-l-2 border-line" />
-      <span className="absolute right-0 top-1/2 h-3 translate-x-1/2 -translate-y-1/2 rotate-45 border-l-2 border-line" />
-      <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-paper px-2 font-display text-base tabular-nums text-mid">
-        {width ? Math.round(width) : ""}
-      </span>
-    </div>
-  )
-}
+// Where each leader leaves the name, in ems from its note, and how far each note drops below the row.
+const leaderOffsets = [-0.42, 0.22, -0.18, 0.4]
+const noteDrops = ["lg:mt-0", "lg:mt-14", "lg:mt-5", "lg:mt-20"]
 
 export default function Hero({ t }) {
   const { ui, about } = t
-  const focus = about.notes.find((note) => note.id === "focus")
-  const rest = about.notes.filter((note) => note !== focus)
   const wrapRef = useRef(null)
   const lineRef = useRef(null)
   const noteRefs = useRef({})
   const [geo, setGeo] = useState(null)
   const [hot, setHot] = useState(null)
 
-  // Leaders run from the baseline of "WENQIANG" straight down onto each note.
+  // Angled leaders run from the baseline of "WENQIANG" down to a short shoulder over each note.
   useLayoutEffect(() => {
     const measure = () => {
       const wrap = wrapRef.current.getBoundingClientRect()
       const line = lineRef.current.getBoundingClientRect()
+      const em = parseFloat(getComputedStyle(lineRef.current).fontSize)
       const baseline = line.bottom - wrap.top - line.height * 0.06
-      const leaders = rest.map(({ id }) => {
+      const leaders = about.notes.map(({ id }, index) => {
         const note = noteRefs.current[id].getBoundingClientRect()
-        return { id, x: note.left - wrap.left, y: note.top - wrap.top - 10 }
+        const x = note.left - wrap.left
+        const from = Math.min(Math.max(x + leaderOffsets[index] * em, 12), line.width - 12)
+        return { id, from, x, y: note.top - wrap.top - 12 }
       })
       setGeo({ width: wrap.width, nameWidth: line.width, baseline, leaders })
     }
@@ -45,9 +36,7 @@ export default function Hero({ t }) {
     observer.observe(wrapRef.current)
     observer.observe(lineRef.current)
     return () => observer.disconnect()
-  }, [t])
-
-  const dim = (id) => (hot && hot !== id ? "opacity-50" : "")
+  }, [about])
 
   return (
     <Sheet
@@ -79,54 +68,47 @@ export default function Hero({ t }) {
                   className="ink"
                   pathLength="1"
                   style={hot === leader.id ? { strokeWidth: 2.25 } : undefined}
-                  d={`M ${leader.x} ${geo.baseline} V ${leader.y} H ${leader.x + 32}`}
+                  d={`M ${leader.from} ${geo.baseline} L ${leader.x} ${leader.y} H ${leader.x + 36}`}
                 />
-                <circle cx={leader.x} cy={geo.baseline} r="4" fill="rgb(var(--line))" />
+                <circle cx={leader.from} cy={geo.baseline} r="4" fill="rgb(var(--line))" />
               </g>
             ))}
           </svg>
         )}
 
         <Dimension width={geo?.nameWidth} />
-        <div
-          aria-hidden="true"
-          className="font-display text-[clamp(3.5rem,min(23cqi,30svh),16rem)] font-bold uppercase leading-[0.8]"
-        >
-          <span ref={lineRef} className="pencil-text block w-fit">
+        <div className="font-display text-[clamp(3.5rem,min(23cqi,30svh),16rem)] font-bold uppercase leading-[0.8]">
+          <span aria-hidden="true" ref={lineRef} className="pencil-text block w-fit">
             Wenqiang
           </span>
-          <span className="pencil-text mt-[0.06em] block">He</span>
+          <div className="mt-[0.06em] lg:flex lg:items-start lg:gap-[0.3em]">
+            <span aria-hidden="true" className="pencil-text block">
+              He
+            </span>
+            <ul className="mt-10 grid gap-8 font-sans text-base font-normal normal-case leading-snug sm:grid-cols-2 lg:mt-[0.2em] lg:flex-1 lg:grid-cols-4 lg:gap-5">
+              {about.notes.map((note, index) => (
+                <li
+                  key={note.id}
+                  ref={(el) => (noteRefs.current[note.id] = el)}
+                  onMouseEnter={() => setHot(note.id)}
+                  className={`transition-opacity duration-300 ${noteDrops[index]} ${hot && hot !== note.id ? "opacity-50" : ""}`}
+                >
+                  <p className="label">{note.label}</p>
+                  <p className="mt-1.5 max-w-[28ch] text-line lg:text-[0.9375rem]">{note.value}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
-
-        <ul className="mt-10 grid gap-8 sm:grid-cols-3 lg:absolute lg:bottom-0 lg:left-[clamp(9rem,26cqi,20rem)] lg:right-0 lg:mt-0 lg:gap-6">
-          {rest.map((note) => (
-            <li
-              key={note.id}
-              ref={(el) => (noteRefs.current[note.id] = el)}
-              onMouseEnter={() => setHot(note.id)}
-              className={`transition-opacity duration-300 ${dim(note.id)}`}
-            >
-              <p className="label">{note.label}</p>
-              <p className="mt-1.5 max-w-[28ch] leading-snug text-line">{note.value}</p>
-            </li>
-          ))}
-        </ul>
       </div>
 
       <p className="mt-10 font-display text-2xl font-medium uppercase tracking-[0.08em] text-mid md:text-3xl">
         {ui.role} · {ui.city}
       </p>
 
-      <div className="mt-10 border-t border-mid/50 pt-4">
+      <div className="mt-8 max-w-[70ch] border-t border-mid/50 pt-4">
         <p className="label">{ui.generalNotes}</p>
-        <ol className="mt-3 grid gap-x-10 gap-y-3 md:grid-cols-2">
-          {[about.intro, focus.value].map((note, index) => (
-            <li key={note} className="flex max-w-[60ch] gap-3">
-              <span className="text-mid">{index + 1}.</span>
-              <span>{note}</span>
-            </li>
-          ))}
-        </ol>
+        <p className="mt-3">{about.intro}</p>
       </div>
     </Sheet>
   )

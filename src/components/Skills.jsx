@@ -1,3 +1,4 @@
+import { Dimensioned } from "./Dimension"
 import { skillGroups } from "../data/content"
 import Sheet from "./Sheet"
 
@@ -16,17 +17,19 @@ export default function Skills({ t }) {
         </div>
       }
     >
-      <h3 className="label">{skills.coreTitle}</h3>
-      <ul className="mt-4 grid border-t-2 border-line md:grid-cols-2 md:gap-x-10">
-        {skills.core.map((skill) => (
-          <li
-            key={skill}
-            className="pencil-text border-b border-mid/40 py-3 font-display text-[clamp(1.375rem,2.4vw,2rem)] font-semibold uppercase leading-tight"
-          >
-            {skill}
-          </li>
-        ))}
-      </ul>
+      <h3 className="label mb-4">{skills.coreTitle}</h3>
+      <Dimensioned>
+        <ul className="grid border-t-2 border-line md:grid-cols-2 md:gap-x-10">
+          {skills.core.map((skill) => (
+            <li
+              key={skill}
+              className="pencil-text border-b border-mid/40 py-3 font-display text-[clamp(1.375rem,2.4vw,2rem)] font-semibold uppercase leading-tight"
+            >
+              {skill}
+            </li>
+          ))}
+        </ul>
+      </Dimensioned>
 
       <div className="mt-16 grid gap-10 md:grid-cols-2">
         {Object.entries(skillGroups).map(([key, items]) => (

@@ -1,5 +1,6 @@
 import { contactLinks } from "../data/content"
 import Arrow from "./Arrow"
+import { Dimensioned } from "./Dimension"
 import Sheet from "./Sheet"
 
 export default function Contact({ t }) {
@@ -7,12 +8,14 @@ export default function Contact({ t }) {
 
   return (
     <Sheet id="contact" issue className="pb-[calc(var(--frame)+var(--pad)+5rem)] xl:min-h-svh">
-      <h2
-        id="contact-title"
-        className="pencil-text font-display text-[clamp(4rem,16vw,13rem)] font-bold uppercase leading-[0.8]"
-      >
-        {contact.title}
-      </h2>
+      <Dimensioned fit>
+        <h2
+          id="contact-title"
+          className="pencil-text font-display text-[clamp(4rem,16vw,13rem)] font-bold uppercase leading-[0.8]"
+        >
+          {contact.title}
+        </h2>
+      </Dimensioned>
       <div className="drawing-title-rule mt-5" />
       <p className="mt-8 max-w-[52ch] text-xl leading-relaxed">{contact.intro}</p>
 

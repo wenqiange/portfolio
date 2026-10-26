@@ -20,7 +20,7 @@ Visitors arrive from a CV, LinkedIn, or GitHub link, on desktop or phone. Deploy
 
 ## Capabilities and Constraints
 - Stack: React 19 + Vite + Tailwind CSS 3; no backend.
-- Bilingual: Spanish (default) and English, with a language switch. All content lives in `src/data/chatData.js`.
+- Bilingual: Spanish (default) and English, with a language switch. All content lives in `src/data/content.js`.
 - Light and dark theme, following system preference by default.
 - **Redesign requested (2026-10-26):** the user wants a complete redesign from scratch, keeping all information. The current chat-interface concept (pick a topic, receive a streamed answer) is *not* binding. Desired direction: a fully animated portfolio with smooth animations.
 
@@ -29,7 +29,7 @@ Visitors arrive from a CV, LinkedIn, or GitHub link, on desktop or phone. Deploy
 - The TT Octosquares fonts in `/fonts` are a TypeType trial license and are **not** to be used on the site.
 
 ## Evidence on Hand
-Content in `src/data/chatData.js` (ES + EN), to be preserved:
+Content in `src/data/content.js` (ES + EN), to be preserved:
 - **Profile:** education (UPC, Software Engineering), current role (junior PHP/Laravel at ATLS), focus (scalable apps, performance, clean code), languages.
 - **Projects:** Tormel POS (Rust, Tauri 2, React, TS, SQLite; github.com/wenqiange/Tormel), Syncly (NestJS, DDD, hexagonal; github.com/wenqiange/Syncly), Tribus (github.com/wenqiange/tribus), Toolsy (live at toolsy-dun.vercel.app; github.com/wenqiange/Toolsy).
 - **Experience:** junior PHP/Laravel developer at ATLS; IT support internship at UPC.

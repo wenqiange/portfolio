@@ -51,20 +51,21 @@ export const contactLinks = [
 
 export const text = {
   es: {
+    lang: "es",
     meta: {
       title: "Wenqiang He — Desarrollador de software",
-      description: "Portfolio de Wenqiang He: estudiante de Ingenieria Informatica en la UPC y desarrollador junior PHP/Laravel en ATLS.",
+      description: "Portfolio de Wenqiang He: estudiante de Ingeniería Informática en la UPC y desarrollador junior PHP/Laravel en ATLS.",
     },
     ui: {
       role: "Desarrollador de software",
       city: "Barcelona",
       sheet: "Hoja",
       of: "de",
-      revision: "Revision",
-      print: "Impresion",
-      day: "Dia",
+      revision: "Revisión",
+      print: "Impresión",
+      day: "Día",
       night: "Noche",
-      navLabel: "Indice de hojas",
+      navLabel: "Índice de hojas",
       languageLabel: "Idioma",
       themeLabel: "Tema",
       scale: "Escala 1:1",
@@ -79,15 +80,16 @@ export const text = {
       portraitPending: "Retrato pendiente",
       current: "Actual",
       previous: "Anterior",
-      issued: "Emitido para revision",
+      issued: "Emitido para revisión",
+      detail: "Detalle",
       generalNotes: "Notas generales",
-      description: "Descripcion",
+      description: "Descripción",
       status: "Estado",
       figure: "Fig. 1 — Wenqiang He",
     },
     nav: { about: "Perfil", projects: "Proyectos", experience: "Experiencia", skills: "Skills", contact: "Contacto" },
     sheets: {
-      about: "Sobre mi",
+      about: "Sobre mí",
       projects: "Proyectos personales",
       experience: "Experiencia laboral",
       skills: "Skills",
@@ -95,31 +97,31 @@ export const text = {
     },
     about: {
       intro:
-        "Soy un desarrollador apasionado por construir productos utiles y mantenibles, con interes tanto en backend y arquitectura como en interfaces web y desktop.",
+        "Soy un desarrollador apasionado por construir productos útiles y mantenibles, con interés tanto en backend y arquitectura como en interfaces web y desktop.",
       notes: [
         { id: "currently", label: "Actualmente", value: "Desarrollador junior PHP/Laravel en ATLS." },
-        { id: "education", label: "Formacion", value: "Estudiante de Ingenieria Informatica, especialidad Ingenieria del Software, en la UPC de Barcelona." },
-        { id: "languages", label: "Idiomas", value: "Catalan, castellano, ingles (C1) y chino (HSK6)." },
-        { id: "focus", label: "Enfoque", value: "Me gusta disenar aplicaciones escalables, cuidar el rendimiento y escribir codigo limpio y mantenible." },
+        { id: "education", label: "Formación", value: "Estudiante de Ingeniería Informática, especialidad Ingeniería del Software, en la UPC de Barcelona." },
+        { id: "languages", label: "Idiomas", value: "Catalán, castellano, inglés (C1) y chino (HSK6)." },
+        { id: "focus", label: "Enfoque", value: "Me gusta diseñar aplicaciones escalables, cuidar el rendimiento y escribir código limpio y mantenible." },
       ],
     },
     projects: {
-      intro: "Estos son algunos de los proyectos que mejor representan mi forma de trabajar y las tecnologias con las que disfruto construyendo.",
+      intro: "Estos son algunos de los proyectos que mejor representan mi forma de trabajar y las tecnologías con las que disfruto construyendo.",
       items: {
         tormel: {
-          description: "Sistema TPV offline-first de alto rendimiento para restaurantes, cafeterias y bares.",
+          description: "Sistema TPV offline-first de alto rendimiento para restaurantes, cafeterías y bares.",
           experience: [
             "Desktop app development con Tauri y Rust",
             "Offline-first architecture",
-            "Diseno y optimizacion con SQLite",
-            "Autenticacion y RBAC",
-            "Almacenamiento seguro y criptografia",
-            "Integracion ESC/POS y generacion PDF",
+            "Diseño y optimización con SQLite",
+            "Autenticación y RBAC",
+            "Almacenamiento seguro y criptografía",
+            "Integración ESC/POS y generación PDF",
             "Fiscal compliance (VeriFactu)",
           ],
         },
         syncly: {
-          description: "Plataforma backend para recomendaciones colaborativas de peliculas y series siguiendo arquitectura hexagonal y modular monolith.",
+          description: "Plataforma backend para recomendaciones colaborativas de películas y series siguiendo arquitectura hexagonal y modular monolith.",
           experience: [
             "Domain-Driven Design",
             "Hexagonal Architecture",
@@ -136,41 +138,41 @@ export const text = {
         },
         toolsy: {
           description:
-            "Plataforma web de micro-herramientas rapidas y utilitarias, pensada para resolver tareas concretas desde una sola interfaz limpia. En su MVP incluye formateador de JSON, generador de contrasenas, generador de QR y compresor de imagenes, con una arquitectura modular preparada para crecer con nuevas herramientas.",
+            "Plataforma web de micro-herramientas rápidas y utilitarias, pensada para resolver tareas concretas desde una sola interfaz limpia. En su MVP incluye formateador de JSON, generador de contraseñas, generador de QR y compresor de imágenes, con una arquitectura modular preparada para crecer con nuevas herramientas.",
           experience: [
             "Arquitectura modular para herramientas web",
             "Procesamiento client-side sin backend",
-            "Generacion de QR y utilidades de navegador",
+            "Generación de QR y utilidades de navegador",
             "Uso de Canvas y Web Crypto API",
-            "Diseno de UX limpia para tareas rapidas",
+            "Diseño de UX limpia para tareas rápidas",
           ],
         },
       },
     },
     experience: {
-      intro: "Mi experiencia combina mantenimiento real de producto, seguridad y soporte tecnico.",
+      intro: "Mi experiencia combina mantenimiento real de producto, seguridad y soporte técnico.",
       items: [
         {
           title: "Desarrollador junior PHP/Laravel",
           org: "ATLS",
           bullets: [
             "Mantenimiento y mejoras de AT INTRANET sobre PHP, WampServer y MySQL.",
-            "Resolucion de incompatibilidades en migraciones a PHP 8.",
+            "Resolución de incompatibilidades en migraciones a PHP 8.",
             "Mejoras de UI con Bootstrap y ag-Grid.",
-            "Correccion de vulnerabilidades de inyeccion SQL en procedimientos almacenados.",
+            "Corrección de vulnerabilidades de inyección SQL en procedimientos almacenados.",
           ],
         },
         {
-          title: "Practicas de soporte TIC",
+          title: "Prácticas de soporte TIC",
           org: "UPC",
-          bullets: ["Soporte tecnico en laboratorio de realidad virtual.", "Resolucion de bugs en software open-source."],
+          bullets: ["Soporte técnico en laboratorio de realidad virtual.", "Resolución de bugs en software open-source."],
         },
       ],
     },
     skills: {
-      intro: "Trabajo comodo tanto en capas de arquitectura y backend como en interfaces web y desktop.",
+      intro: "Trabajo cómodo tanto en capas de arquitectura y backend como en interfaces web y desktop.",
       coreTitle: "Skills principales",
-      groups: { languages: "Lenguajes", frameworks: "Frameworks y librerias", databases: "Bases de datos", tools: "Tools" },
+      groups: { languages: "Lenguajes", frameworks: "Frameworks y librerías", databases: "Bases de datos", tools: "Tools" },
       core: [
         "Hexagonal Architecture y Modular Monolith",
         "Desktop application development",
@@ -186,10 +188,11 @@ export const text = {
     },
     contact: {
       title: "Hablemos",
-      intro: "Puedes encontrarme aqui. Si quieres colaborar o hablar de un proyecto, escribeme.",
+      intro: "Puedes encontrarme aquí. Si quieres colaborar o hablar de un proyecto, escríbeme.",
     },
   },
   en: {
+    lang: "en",
     meta: {
       title: "Wenqiang He — Software developer",
       description: "Portfolio of Wenqiang He: Computer Engineering student at UPC and junior PHP/Laravel developer at ATLS.",
@@ -219,6 +222,7 @@ export const text = {
       current: "Current",
       previous: "Previous",
       issued: "Issued for review",
+      detail: "Detail",
       generalNotes: "General notes",
       description: "Description",
       status: "Status",

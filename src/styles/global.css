@@ -1,0 +1,167 @@
+:root {
+  /* 16-colour cabinet palette; each hue has one job (see DESIGN.md once written). */
+  --black: #07070d;
+  --deep: #0d1033;
+  --deep-2: #151a4a;
+  --blue: #2b4cff;
+  --cyan: #3fd6ff;
+  --green: #3ddc68;
+  --yellow: #ffd23f;
+  --red: #ff4b3e;
+  --red-dark: #b3261e;
+  --magenta: #ff4fa3;
+  --violet: #6b3fd6;
+  --lilac: #b9a3ff;
+  --white: #f4f4f8;
+  --text: #e3e4ee;
+  --steel: #9a9fbb;
+  --gold: #ffe9a8;
+
+  /* Press Start 2P for Latin, Fusion Pixel (unicode-range subsets) for Chinese: both pixel faces. */
+  --px: 'Press Start 2P', 'Fusion Pixel ZH', monospace;
+  --body: 'Atkinson Hyperlegible', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', system-ui, sans-serif;
+
+  --u: 8px;
+  --gutter: 16px;
+  --max: 1200px;
+  --hud-h: 56px;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+  color-scheme: dark;
+}
+
+@media (min-width: 720px) {
+  :root { --gutter: 32px; }
+}
+/* Phone HUD runs on two rows: name, then language and FX. */
+@media (max-width: 559px) {
+  :root { --hud-h: 104px; }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; }
+
+html {
+  background: var(--black);
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--hud-h) + var(--u) * 2);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--black);
+  color: var(--text);
+  font-family: var(--body);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  min-height: 100svh;
+  overflow-x: hidden;
+  scrollbar-color: var(--blue) var(--black);
+}
+
+/* Scanlines: a capability layer the visitor can switch off. */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 100;
+  background: repeating-linear-gradient(to bottom, transparent 0 2px, rgb(0 0 0 / 0.22) 2px 3px);
+}
+html.no-scan body::after { display: none; }
+
+/* Phosphor bloom: the cabinet's light. Lives and dies with the FX toggle. */
+html:not(.no-scan) { --bloom: 0 0 10px; }
+html.no-scan { --bloom: 0 0 0; }
+
+::selection { background: var(--yellow); color: var(--black); }
+::-webkit-scrollbar { width: 12px; }
+::-webkit-scrollbar-track { background: var(--black); }
+::-webkit-scrollbar-thumb { background: var(--blue); border: 3px solid var(--black); }
+
+a { color: var(--cyan); text-underline-offset: 4px; text-decoration-thickness: 2px; }
+a:hover { color: var(--white); }
+
+:focus-visible {
+  outline: 3px solid var(--cyan);
+  outline-offset: 3px;
+}
+
+img, svg, canvas { display: block; max-width: 100%; }
+
+.px { font-family: var(--px); font-weight: 400; letter-spacing: 0; line-height: 1.5; text-transform: uppercase; }
+
+.wrap { width: min(100% - var(--gutter) * 2, var(--max)); margin-inline: auto; }
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* Cabinet panel: square pixel frame, a hairline inner bevel, no rounded corners anywhere. */
+.panel {
+  background: var(--deep);
+  border: 3px solid var(--blue);
+  box-shadow: inset 0 0 0 1px var(--black), inset 0 0 0 2px var(--deep-2);
+  padding: calc(var(--u) * 3);
+}
+
+.chip {
+  display: inline-block;
+  font-family: var(--px);
+  font-size: 1rem;
+  line-height: 1.5;
+  text-transform: uppercase;
+  color: var(--lilac);
+  border: 2px solid var(--violet);
+  padding: 6px 10px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--px);
+  font-size: 1rem;
+  line-height: 1.5;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--white);
+  background: var(--blue);
+  border: 3px solid var(--cyan);
+  /* Pixel bevel: lit top-left edge, shaded bottom-right edge. */
+  box-shadow: inset 3px 3px 0 #5f7bff, inset -3px -3px 0 #1a2fa8, var(--bloom) rgb(63 214 255 / 0.35);
+  padding: 16px 24px;
+  cursor: pointer;
+  transition: background-color 120ms steps(2), color 120ms steps(2), transform 120ms steps(2);
+}
+.btn:hover { background: var(--cyan); color: var(--black); box-shadow: inset 3px 3px 0 #a8ecff, inset -3px -3px 0 #1d8fb3, var(--bloom) rgb(63 214 255 / 0.5); }
+.btn:active { transform: translateY(2px); }
+.btn--ghost { background: transparent; border-color: var(--magenta); color: var(--magenta); box-shadow: var(--bloom) rgb(255 79 163 / 0.3); }
+.btn--ghost:hover { background: var(--magenta); color: var(--black); box-shadow: inset 3px 3px 0 #ff9ccb, inset -3px -3px 0 #b3236b; }
+
+.section { padding-block: calc(var(--u) * 12); }
+@media (min-width: 720px) { .section-head h2 { font-size: 3rem; } }
+@media (min-width: 720px) { .section { padding-block: calc(var(--u) * 16); } }
+
+.section-head { display: grid; gap: calc(var(--u) * 2); margin-bottom: calc(var(--u) * 5); }
+.section-head .code { color: var(--magenta); }
+.section-head h2 { text-shadow: var(--bloom) rgb(255 210 63 / 0.35); }
+.section-head h2 {
+  font-family: var(--px);
+  font-weight: 400;
+  text-transform: uppercase;
+  color: var(--yellow);
+  font-size: 2rem;
+  line-height: 1.25;
+}
+.section-head p { max-width: 62ch; color: var(--text); font-size: 1.1875rem; }
+
+/* Power-up mode (Konami): palette flash on the frame language, content untouched. */
+html.powerup .panel { border-color: var(--gold); }
+html.powerup .section-head h2 { color: var(--gold); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}

@@ -1,0 +1,116 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "dark-glow",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/terminal-r2.html"
+        ],
+        "createdAt": "2026-10-28T12:59:14.589Z",
+        "reason": "model: phosphor bloom is the literal material of the dealt phosphor-terminal challenger sketch, a spent decision sketch"
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/manga-r2.html"
+        ],
+        "createdAt": "2026-10-28T13:01:17.016Z",
+        "reason": "model: unchosen, spent decision sketch; never ships"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgb(0 0 0 / 0.22)",
+        "files": [
+          "src/styles/global.css"
+        ],
+        "createdAt": "2026-10-28T13:27:55.998Z",
+        "reason": "model: scanline overlay darkening, a material layer not a palette colour; documented under the FX toggle in DESIGN.md"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/assigned.html"
+        ],
+        "createdAt": "2026-10-28T13:28:17.568Z",
+        "reason": "model: spent decision sketch for an unchosen direction; never ships"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/pick.html"
+        ],
+        "createdAt": "2026-10-28T13:28:17.841Z",
+        "reason": "model: spent decision sketch for an unchosen direction; never ships"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/challenger-zine.html"
+        ],
+        "createdAt": "2026-10-28T13:28:18.107Z",
+        "reason": "model: spent decision sketch for an unchosen direction; never ships"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/canon.html"
+        ],
+        "createdAt": "2026-10-28T13:28:18.376Z",
+        "reason": "model: spent decision sketch for an unchosen direction; never ships"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/assigned-r1.html"
+        ],
+        "createdAt": "2026-10-28T13:28:18.657Z",
+        "reason": "model: spent decision sketch for an unchosen direction; never ships"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/pick-r1.html"
+        ],
+        "createdAt": "2026-10-28T13:28:18.934Z",
+        "reason": "model: spent decision sketch for an unchosen direction; never ships"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/lead-r2.html"
+        ],
+        "createdAt": "2026-10-28T13:28:19.209Z",
+        "reason": "model: spent decision sketch for an unchosen direction; never ships"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/manga-r2.html"
+        ],
+        "createdAt": "2026-10-28T13:28:19.482Z",
+        "reason": "model: spent decision sketch for an unchosen direction; never ships"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/terminal-r2.html"
+        ],
+        "createdAt": "2026-10-28T13:28:19.761Z",
+        "reason": "model: spent decision sketch for an unchosen direction; never ships"
+      }
+    ]
+  }
+}

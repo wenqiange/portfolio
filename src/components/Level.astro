@@ -1,0 +1,148 @@
+---
+import type { Dict, Project } from '../i18n/types';
+import Sprite from './Sprite.astro';
+import { arrowRight, lock, palette, player } from './sprites';
+
+interface Props {
+  project: Project;
+  labels: Dict['project'];
+}
+const { project: p, labels } = Astro.props;
+const headingId = `${p.id}-title`;
+---
+<section id={p.id} class="section level" aria-labelledby={headingId}>
+  <div class="wrap">
+    <header class="section-head">
+      <h2 id={headingId}><span class="code">{p.world}</span> {p.name}</h2>
+      <p>{p.kind}</p>
+    </header>
+
+    <div class="level__stage panel" data-level>
+      <h3 class="sr-only">{labels.mapLabel}</h3>
+      <div class="level__track">
+        <Sprite class="level__player" size={32} rows={player} colors={palette} />
+        <ol class="level__map">
+          {p.map.map((n, i) => (
+            <li class="tile" data-tile>
+              <span class="tile__name px"><span class="tile__idx px">{String(i + 1).padStart(2, '0')}</span> {n.label}</span>
+              <span class="tile__detail">{n.detail}</span>
+            </li>
+          ))}
+          <li class="tile tile--boss" data-tile>
+            <span class="tile__name px">
+              <Sprite class="tile__lock" size={24} rows={lock} colors={palette} />
+              <span><span class="sr-only">{labels.bossLabel}: </span>{p.boss.label}</span>
+            </span>
+            <span class="tile__detail">{p.boss.detail}</span>
+          </li>
+        </ol>
+      </div>
+      <p class="level__clear px" data-clear>{labels.clear}</p>
+    </div>
+
+    <div class="level__body">
+      <div>
+        <h3 class="level__h3 px">{labels.challengesLabel}</h3>
+        <ul class="level__challenges">
+          {p.challenges.map((c) => (
+            <li>
+              <h4>{c.title}</h4>
+              <p>{c.body}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <aside class="level__side" aria-label={labels.stackLabel}>
+        <h3 class="level__h3 px">{labels.stackLabel}</h3>
+        <ul class="level__stack">
+          {p.stack.map((s) => <li class="chip">{s}</li>)}
+        </ul>
+        <a class="btn" href={p.repo} rel="noopener">
+          {labels.repo}
+          <Sprite class="btn__icon" size={12} rows={arrowRight} colors={palette} />
+          <span class="sr-only">(GitHub)</span>
+        </a>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<style>
+  .level__stage { position: relative; padding: calc(var(--u) * 4) calc(var(--u) * 3); overflow: hidden; }
+
+  .level__track { position: relative; }
+  .level__track :global(.level__player) {
+    position: absolute; left: 0; top: 0; z-index: 2;
+    will-change: transform;
+  }
+  /* The request path the player walks: one continuous pixel-dash rail. */
+  .level__track::before {
+    content: '';
+    position: absolute;
+    left: 13px; top: 16px; bottom: 16px; width: 6px;
+    background: repeating-linear-gradient(to bottom, var(--blue) 0 6px, transparent 6px 12px);
+  }
+  @media (min-width: 900px) {
+    .level__track::before {
+      left: 16px; right: 16px; top: 36px; bottom: auto; width: auto; height: 6px;
+      background: repeating-linear-gradient(to right, var(--blue) 0 6px, transparent 6px 12px);
+    }
+  }
+
+  .level__map {
+    list-style: none; padding: 0 0 0 48px;
+    display: grid; gap: 16px;
+  }
+  @media (min-width: 900px) {
+    .level__map {
+      padding: 56px 0 0;
+      grid-auto-flow: column; grid-auto-columns: minmax(min-content, 1fr); gap: 16px;
+    }
+  }
+
+  .tile {
+    position: relative;
+    display: grid; align-content: start; gap: 10px;
+    padding: 16px;
+    border: 3px solid var(--deep-2);
+    background: var(--black);
+    transition: border-color 200ms steps(3), box-shadow 200ms steps(3);
+  }
+  .tile__name {
+    /* Index or lock in a fixed column; the name wraps beside it, never under it. */
+    display: grid; grid-template-columns: auto 1fr; align-items: start; gap: 10px;
+    font-size: 1rem; line-height: 1.5; color: var(--white);
+  }
+  .tile__idx { font-size: 1rem; color: var(--cyan); }
+  .tile__detail { font-size: 0.9375rem; line-height: 1.5; color: var(--text); }
+  .tile--boss { border-color: var(--red-dark); }
+  .tile--boss .tile__name, .tile--boss .tile__idx { color: var(--red); }
+
+  /* Scripted state: tiles wait unlit until the player reaches them. Without JS they stay lit. */
+  :global(.js) .tile:not(.is-lit) .tile__idx { color: var(--steel); }
+  :global(.js) .tile:not(.is-lit) :global(svg) { opacity: 0.5; }
+  .tile.is-lit { border-color: var(--cyan); box-shadow: var(--bloom) rgb(63 214 255 / 0.3); }
+  .tile--boss.is-lit { border-color: var(--red); box-shadow: var(--bloom) rgb(255 75 62 / 0.35); }
+
+  .level__clear {
+    margin-top: calc(var(--u) * 3);
+    font-size: 1rem; color: var(--green);
+    text-shadow: var(--bloom) rgb(61 220 104 / 0.45);
+  }
+  :global(.js) .level__clear:not(.is-on) { visibility: hidden; }
+
+  .level__body {
+    display: grid; gap: calc(var(--u) * 6);
+    margin-top: calc(var(--u) * 6);
+  }
+  @media (min-width: 900px) { .level__body { grid-template-columns: 1.6fr 1fr; gap: calc(var(--u) * 8); } }
+
+  .level__h3 { font-size: 1rem; color: var(--cyan); margin-bottom: calc(var(--u) * 3); line-height: 1.8; }
+  .level__challenges { list-style: none; padding: 0; display: grid; gap: calc(var(--u) * 4); }
+  .level__challenges h4 { font-size: 1.25rem; color: var(--white); margin-bottom: 6px; }
+  .level__challenges p { max-width: 62ch; }
+
+  .level__side { display: grid; align-content: start; gap: calc(var(--u) * 3); }
+  .level__stack { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .level__side .btn { justify-self: start; }
+</style>

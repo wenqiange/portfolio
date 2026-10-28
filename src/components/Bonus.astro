@@ -1,0 +1,72 @@
+---
+import type { Dict } from '../i18n/types';
+
+interface Props {
+  data: Dict['contact'];
+}
+const { data } = Astro.props;
+const g = data.game;
+---
+<section id="contacto" class="section bonus" aria-labelledby="contact-title">
+  <div class="wrap bonus__in">
+    <div class="bonus__contact">
+      <header class="section-head">
+        <h2 id="contact-title"><span class="code">{data.code}</span> {data.heading}</h2>
+        <p>{data.text}</p>
+      </header>
+      <a class="bonus__mail" href={`mailto:${data.email}`}>{data.email}</a>
+      <ul class="bonus__links">
+        {data.links.map((l) => (
+          <li><a class="btn btn--ghost" href={l.href} rel="noopener">{l.label}</a></li>
+        ))}
+      </ul>
+    </div>
+
+    <div class="game panel" data-game
+      data-score={g.score} data-over={g.over} data-again={g.again} data-play={g.play}>
+      <div class="game__top">
+        <h3 class="game__title px">{g.title}</h3>
+        <p class="game__score px" aria-live="polite"><span>{g.score}</span> <span data-game-score>0000</span></p>
+      </div>
+      <canvas class="game__screen" width="320" height="200" aria-label={`${g.title}. ${g.rules}`} role="img"></canvas>
+      <p class="game__rules">{g.rules}</p>
+      <p class="game__keys">{g.keys}</p>
+      <button class="btn" type="button" data-game-play>{g.play}</button>
+    </div>
+  </div>
+</section>
+
+<style>
+  .bonus__in { display: grid; gap: calc(var(--u) * 8); align-items: start; }
+  @media (min-width: 960px) { .bonus__in { grid-template-columns: 1fr 1fr; } }
+
+  .bonus .section-head h2 .code { color: var(--magenta); }
+  .bonus__mail {
+    display: inline-block;
+    font-family: var(--px);
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--yellow);
+    overflow-wrap: anywhere;
+    padding-block: 8px;
+  }
+  .bonus__mail:hover { color: var(--white); }
+  @media (min-width: 720px) { .bonus__mail { font-size: 1.5rem; } }
+  .bonus__links { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 12px; margin-top: calc(var(--u) * 4); }
+
+  .game { display: grid; gap: 16px; border-color: var(--magenta); }
+  .game__top { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; }
+  .game__title { font-size: 1rem; color: var(--magenta); }
+  .game__score { font-size: 1rem; color: var(--steel); }
+  .game__score [data-game-score] { color: var(--yellow); }
+  .game__screen {
+    width: 100%; height: auto; aspect-ratio: 320 / 200;
+    image-rendering: pixelated;
+    background: var(--black);
+    border: 2px solid var(--deep-2);
+    touch-action: none;
+  }
+  .game__rules { color: var(--white); }
+  .game__keys { font-size: 0.9375rem; color: var(--steel); }
+  .game .btn { justify-self: start; }
+</style>

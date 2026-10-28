@@ -1,0 +1,54 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hud from './Hud.astro';
+import TitleScreen from './TitleScreen.astro';
+import Level from './Level.astro';
+import Experience from './Experience.astro';
+import Inventory from './Inventory.astro';
+import Bonus from './Bonus.astro';
+import { dicts, type Locale } from '../i18n';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = dicts[locale];
+---
+<Layout locale={locale}>
+  <Hud locale={locale} />
+  <main id="main">
+    <TitleScreen locale={locale} />
+    {t.projects.map((p) => <Level project={p} labels={t.project} />)}
+    <Experience data={t.experience} />
+    <Inventory data={t.stack} />
+    <Bonus data={t.contact} />
+  </main>
+  <footer class="foot wrap px">{t.footer}</footer>
+  <p class="toast px" role="status" aria-live="polite" data-toast></p>
+  <script type="application/json" id="eggs" set:html={JSON.stringify(t.eggs)} />
+</Layout>
+
+<script>
+  import '../scripts/main.ts';
+</script>
+
+<style>
+  .foot {
+    border-top: 3px solid var(--blue);
+    padding-block: calc(var(--u) * 5);
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--steel);
+  }
+  .toast {
+    position: fixed; left: 50%; bottom: 24px; z-index: 90;
+    transform: translate(-50%, 160%);
+    width: max-content; max-width: calc(100% - var(--gutter) * 2);
+    background: var(--black); color: var(--yellow);
+    border: 3px solid var(--yellow);
+    padding: 14px 18px; font-size: 1rem; line-height: 1.8;
+    transition: transform 280ms var(--ease-out);
+  }
+  .toast:empty { visibility: hidden; }
+  :global(.toast.is-on) { transform: translate(-50%, 0); }
+</style>

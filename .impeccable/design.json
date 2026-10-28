@@ -1,0 +1,540 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-28T13:30:18.215Z",
+  "title": "Design System: Wenqiang He",
+  "extensions": {
+    "colorMeta": {
+      "phosphor-black": {
+        "role": "neutral",
+        "displayName": "Phosphor Black",
+        "canonical": "#07070d",
+        "oklch": "oklch(13.2% 0.014 284.3)",
+        "tonalRamp": [
+          "#0b0b0d",
+          "#232428",
+          "#3f3f45",
+          "#5c5d65",
+          "#7f7f88",
+          "#a3a4ab",
+          "#cacad0",
+          "#eeeef2"
+        ]
+      },
+      "cabinet-navy": {
+        "role": "neutral",
+        "displayName": "Cabinet Navy",
+        "canonical": "#0d1033",
+        "oklch": "oklch(19.6% 0.068 274.5)",
+        "tonalRamp": [
+          "#080a17",
+          "#1e2238",
+          "#373e5b",
+          "#535b81",
+          "#747ea7",
+          "#9aa3c6",
+          "#c2c9e6",
+          "#e9eeff"
+        ]
+      },
+      "cabinet-navy-raised": {
+        "role": "neutral",
+        "displayName": "Cabinet Navy Raised",
+        "canonical": "#151a4a",
+        "oklch": "oklch(24.7% 0.088 273.5)",
+        "tonalRamp": [
+          "#070a1a",
+          "#1c223d",
+          "#343d63",
+          "#4f5a8b",
+          "#707db2",
+          "#97a2d0",
+          "#bfc9ed",
+          "#e6edff"
+        ]
+      },
+      "arcade-blue": {
+        "role": "primary",
+        "displayName": "Arcade Blue",
+        "canonical": "#2b4cff",
+        "oklch": "oklch(52.7% 0.263 267.0)",
+        "tonalRamp": [
+          "#020037",
+          "#080d6d",
+          "#1527a6",
+          "#2542e1",
+          "#406bff",
+          "#6b9aff",
+          "#9dc6ff",
+          "#cfedff"
+        ]
+      },
+      "scan-cyan": {
+        "role": "secondary",
+        "displayName": "Scan Cyan",
+        "canonical": "#3fd6ff",
+        "oklch": "oklch(81.6% 0.134 220.6)",
+        "tonalRamp": [
+          "#000f1b",
+          "#002b3e",
+          "#004a65",
+          "#006b8d",
+          "#0090b4",
+          "#4db3d2",
+          "#8ed7ef",
+          "#c7f8ff"
+        ]
+      },
+      "verified-green": {
+        "role": "tertiary",
+        "displayName": "Verified Green",
+        "canonical": "#3ddc68",
+        "oklch": "oklch(78.9% 0.205 148.1)",
+        "tonalRamp": [
+          "#001300",
+          "#003100",
+          "#005300",
+          "#007703",
+          "#009d32",
+          "#52bf69",
+          "#92e09d",
+          "#caffd0"
+        ]
+      },
+      "marquee-yellow": {
+        "role": "primary",
+        "displayName": "Marquee Yellow",
+        "canonical": "#ffd23f",
+        "oklch": "oklch(87.9% 0.162 90.9)",
+        "tonalRamp": [
+          "#150800",
+          "#352000",
+          "#583a00",
+          "#7d5700",
+          "#a27a00",
+          "#c2a13a",
+          "#e2c980",
+          "#ffeebd"
+        ]
+      },
+      "threat-red": {
+        "role": "tertiary",
+        "displayName": "Threat Red",
+        "canonical": "#ff4b3e",
+        "oklch": "oklch(66.9% 0.218 28.5)",
+        "tonalRamp": [
+          "#260000",
+          "#520000",
+          "#810000",
+          "#b30003",
+          "#e03a30",
+          "#fc7565",
+          "#ffa99a",
+          "#ffd9cd"
+        ]
+      },
+      "ember-red": {
+        "role": "tertiary",
+        "displayName": "Ember Red",
+        "canonical": "#b3261e",
+        "oklch": "oklch(50.1% 0.178 28.7)",
+        "tonalRamp": [
+          "#220000",
+          "#4b0101",
+          "#77130e",
+          "#a62921",
+          "#d14f42",
+          "#ee8072",
+          "#ffb0a3",
+          "#ffddd3"
+        ]
+      },
+      "insert-coin-magenta": {
+        "role": "secondary",
+        "displayName": "Insert-Coin Magenta",
+        "canonical": "#ff4fa3",
+        "oklch": "oklch(69.5% 0.223 355.3)",
+        "tonalRamp": [
+          "#23000d",
+          "#4e0027",
+          "#7b0044",
+          "#ab0063",
+          "#d73586",
+          "#f570a9",
+          "#ffa5ce",
+          "#ffd6f1"
+        ]
+      },
+      "chip-violet": {
+        "role": "tertiary",
+        "displayName": "Chip Violet",
+        "canonical": "#6b3fd6",
+        "oklch": "oklch(51.1% 0.216 289.9)",
+        "tonalRamp": [
+          "#0e002c",
+          "#270c5c",
+          "#43238e",
+          "#623cc2",
+          "#8361ee",
+          "#a48fff",
+          "#c9bcff",
+          "#ede5ff"
+        ]
+      },
+      "chip-lilac": {
+        "role": "tertiary",
+        "displayName": "Chip Lilac",
+        "canonical": "#b9a3ff",
+        "oklch": "oklch(77.0% 0.131 294.1)",
+        "tonalRamp": [
+          "#0d051f",
+          "#271a45",
+          "#44336e",
+          "#624e99",
+          "#8570c2",
+          "#a898de",
+          "#cdc1f9",
+          "#f0e8ff"
+        ]
+      },
+      "pixel-white": {
+        "role": "neutral",
+        "displayName": "Pixel White",
+        "canonical": "#f4f4f8",
+        "oklch": "oklch(96.8% 0.005 286.3)",
+        "tonalRamp": [
+          "#0b0b0c",
+          "#242425",
+          "#3f3f42",
+          "#5d5d60",
+          "#808083",
+          "#a4a4a7",
+          "#cacacc",
+          "#eeeef0"
+        ]
+      },
+      "screen-text": {
+        "role": "neutral",
+        "displayName": "Screen Text",
+        "canonical": "#e3e4ee",
+        "oklch": "oklch(92.1% 0.014 281.6)",
+        "tonalRamp": [
+          "#0b0b0d",
+          "#232428",
+          "#3f3f45",
+          "#5c5d65",
+          "#7f7f88",
+          "#a3a4ab",
+          "#c9cad0",
+          "#eeeef2"
+        ]
+      },
+      "steel": {
+        "role": "neutral",
+        "displayName": "Steel",
+        "canonical": "#9a9fbb",
+        "oklch": "oklch(70.8% 0.041 277.3)",
+        "tonalRamp": [
+          "#090b12",
+          "#212330",
+          "#3b3e50",
+          "#585c73",
+          "#7a7f98",
+          "#9fa3b9",
+          "#c6c9db",
+          "#ebeefa"
+        ]
+      },
+      "power-up-gold": {
+        "role": "tertiary",
+        "displayName": "Power-Up Gold",
+        "canonical": "#ffe9a8",
+        "oklch": "oklch(93.7% 0.086 91.6)",
+        "tonalRamp": [
+          "#100a00",
+          "#2d2302",
+          "#4c3e10",
+          "#6e5c24",
+          "#927f45",
+          "#b4a475",
+          "#d6caa6",
+          "#f7eed5"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Marquee",
+        "purpose": "The title-screen name only. 32px phone, 48px from 560px, 80px from 960px; yellow with ember drop and bloom."
+      },
+      "headline": {
+        "displayName": "Section Headline",
+        "purpose": "Section h2 with magenta world code. 32px phone, 48px from 720px."
+      },
+      "title": {
+        "displayName": "Reading Title",
+        "purpose": "Job roles (1.375rem) and challenge titles (1.25rem) in the reading face, weight 700."
+      },
+      "body": {
+        "displayName": "Reading Body",
+        "purpose": "All prose, 62-70ch. Lead 1.1875rem, metadata 0.9375rem."
+      },
+      "label": {
+        "displayName": "Pixel Label",
+        "purpose": "HUD, buttons, chips, tiles, codes, hints. Pixel face only at 16/24/32/48/80px. CJK via Fusion Pixel ZH with size-adjust 150%."
+      },
+      "headline-phone": {
+        "displayName": "Section Headline (phone)",
+        "purpose": "Section h2 and marquee below their breakpoints: pixel face at 32px."
+      },
+      "label-large": {
+        "displayName": "Pixel Label Large",
+        "purpose": "The contact email from 720px: pixel face at 24px (3x the 8px grid)."
+      },
+      "title-small": {
+        "displayName": "Reading Title Small",
+        "purpose": "Challenge titles in case studies, Atkinson 700 at 1.25rem."
+      },
+      "lead": {
+        "displayName": "Lead",
+        "purpose": "Title tagline and section intros, Atkinson 400 at 1.1875rem."
+      },
+      "meta": {
+        "displayName": "Meta",
+        "purpose": "Place and period, tile details, profile line and game hint, Atkinson 400 at 0.9375rem in steel or screen text."
+      }
+    },
+    "shadows": [
+      {
+        "name": "panel-bevel",
+        "value": "inset 0 0 0 1px #07070d, inset 0 0 0 2px #151a4a",
+        "purpose": "Hairline inner frame on every panel."
+      },
+      {
+        "name": "button-bevel-primary",
+        "value": "inset 3px 3px 0 #5f7bff, inset -3px -3px 0 #1a2fa8",
+        "purpose": "Raised key bevel on the blue button."
+      },
+      {
+        "name": "button-bevel-primary-hover",
+        "value": "inset 3px 3px 0 #a8ecff, inset -3px -3px 0 #1d8fb3",
+        "purpose": "Bevel on the cyan hover state."
+      },
+      {
+        "name": "button-bevel-ghost-hover",
+        "value": "inset 3px 3px 0 #ff9ccb, inset -3px -3px 0 #b3236b",
+        "purpose": "Bevel on the magenta ghost hover state."
+      },
+      {
+        "name": "marquee-drop",
+        "value": "4px 4px 0 #b3261e (6px from 560px, 8px from 960px)",
+        "purpose": "Text-shadow on the marquee name only."
+      },
+      {
+        "name": "bloom",
+        "value": "var(--bloom) <hue at 0.3-0.5 alpha>; --bloom is 0 0 10px, 0 0 0 under html.no-scan",
+        "purpose": "Phosphor glow of lit elements, governed by the FX toggle."
+      },
+      {
+        "name": "scanlines",
+        "value": "repeating-linear-gradient(to bottom, transparent 0 2px, rgb(0 0 0 / 0.22) 2px 3px)",
+        "purpose": "Fixed body::after CRT overlay, removed by html.no-scan."
+      }
+    ],
+    "motion": [
+      {
+        "name": "step-state",
+        "value": "120ms steps(2)",
+        "purpose": "Colour and transform changes on buttons and tiles: snaps, never fades."
+      },
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "World-tile lift (160ms) and toast slide (280ms)."
+      },
+      {
+        "name": "tile-light",
+        "value": "200ms steps(3)",
+        "purpose": "Level tile lighting up as the player arrives."
+      },
+      {
+        "name": "level-scrub",
+        "value": "GSAP ScrollTrigger, start top 75%, end bottom 45%, scrub 0.4",
+        "purpose": "Player walks the request path; renders complete under reduced motion."
+      },
+      {
+        "name": "start-blink",
+        "value": "1.2s steps(1) x5",
+        "purpose": "Finite blink on the START arrow."
+      },
+      {
+        "name": "attract-patrol",
+        "value": "9s steps(36) infinite alternate",
+        "purpose": "Player patrols the world row; stops with FX off and under reduced motion."
+      },
+      {
+        "name": "press",
+        "value": "translateY(2px)",
+        "purpose": "Button active state."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "hud-two-row",
+        "value": "max-width 559px"
+      },
+      {
+        "name": "marquee-md",
+        "value": "560px"
+      },
+      {
+        "name": "gutter-lg",
+        "value": "720px"
+      },
+      {
+        "name": "level-horizontal",
+        "value": "900px"
+      },
+      {
+        "name": "hud-nav",
+        "value": "960px"
+      },
+      {
+        "name": "worlds-row",
+        "value": "1100px"
+      },
+      {
+        "name": "hud-credit",
+        "value": "1200px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Bevelled arcade key for the main action (START, repo links).",
+      "html": "<a class=\"ds-btn\" href=\"#\">PULSA START</a>",
+      "css": ".ds-btn { display: inline-flex; align-items: center; gap: 12px; font-family: 'Press Start 2P', 'Fusion Pixel ZH', monospace; font-size: 16px; line-height: 1.5; text-transform: uppercase; text-decoration: none; color: #f4f4f8; background: #2b4cff; border: 3px solid #3fd6ff; box-shadow: inset 3px 3px 0 #5f7bff, inset -3px -3px 0 #1a2fa8, 0 0 10px rgb(63 214 255 / 0.35); padding: 16px 24px; cursor: pointer; transition: background-color 120ms steps(2), color 120ms steps(2), transform 120ms steps(2); } .ds-btn:hover { background: #3fd6ff; color: #07070d; box-shadow: inset 3px 3px 0 #a8ecff, inset -3px -3px 0 #1d8fb3, 0 0 10px rgb(63 214 255 / 0.5); } .ds-btn:active { transform: translateY(2px); } .ds-btn:focus-visible { outline: 3px solid #3fd6ff; outline-offset: 3px; }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Secondary action in magenta.",
+      "html": "<a class=\"ds-btn-ghost\" href=\"#\">GITHUB</a>",
+      "css": ".ds-btn-ghost { display: inline-flex; font-family: 'Press Start 2P', 'Fusion Pixel ZH', monospace; font-size: 16px; line-height: 1.5; text-transform: uppercase; text-decoration: none; color: #ff4fa3; background: transparent; border: 3px solid #ff4fa3; box-shadow: 0 0 10px rgb(255 79 163 / 0.3); padding: 16px 24px; transition: background-color 120ms steps(2), color 120ms steps(2), transform 120ms steps(2); } .ds-btn-ghost:hover { background: #ff4fa3; color: #07070d; box-shadow: inset 3px 3px 0 #ff9ccb, inset -3px -3px 0 #b3236b; } .ds-btn-ghost:active { transform: translateY(2px); } .ds-btn-ghost:focus-visible { outline: 3px solid #3fd6ff; outline-offset: 3px; }"
+    },
+    {
+      "name": "Stack Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Technology tag in stack lists.",
+      "html": "<span class=\"ds-chip\">RUST</span>",
+      "css": ".ds-chip { display: inline-block; font-family: 'Press Start 2P', 'Fusion Pixel ZH', monospace; font-size: 16px; line-height: 1.5; text-transform: uppercase; color: #b9a3ff; border: 2px solid #6b3fd6; padding: 6px 10px; }"
+    },
+    {
+      "name": "Cabinet Panel",
+      "kind": "card",
+      "refersTo": "panel",
+      "description": "Default container: navy fill, square 3px blue frame, inner bevel.",
+      "html": "<div class=\"ds-panel\"><p>Typed, secure backend systems.</p></div>",
+      "css": ".ds-panel { background: #0d1033; color: #e3e4ee; border: 3px solid #2b4cff; box-shadow: inset 0 0 0 1px #07070d, inset 0 0 0 2px #151a4a; padding: 24px; font-family: 'Atkinson Hyperlegible', system-ui, sans-serif; font-size: 17px; line-height: 1.6; }"
+    },
+    {
+      "name": "HUD Bar",
+      "kind": "nav",
+      "refersTo": "hud",
+      "description": "Sticky top bar: 1UP, world links, language, FX toggle.",
+      "html": "<nav class=\"ds-hud\"><span class=\"ds-hud-up\"><b>1UP</b> WENQIANG</span><a href=\"#\">1-1</a><a href=\"#\">1-2</a><a href=\"#\" aria-current=\"page\" class=\"ds-hud-lang\">ES</a><button class=\"ds-hud-fx\" aria-pressed=\"true\">FX</button></nav>",
+      "css": ".ds-hud { display: flex; align-items: center; gap: 4px; min-height: 56px; padding: 8px 16px; background: #07070d; border-bottom: 3px solid #2b4cff; font-family: 'Press Start 2P', 'Fusion Pixel ZH', monospace; font-size: 16px; text-transform: uppercase; } .ds-hud-up { color: #f4f4f8; margin-right: auto; } .ds-hud-up b { color: #ff4b3e; font-weight: 400; } .ds-hud a { color: #e3e4ee; text-decoration: none; padding: 8px 10px; border: 2px solid transparent; } .ds-hud a:hover { border-color: #3fd6ff; color: #3fd6ff; } .ds-hud a:focus-visible, .ds-hud-fx:focus-visible { outline: 3px solid #3fd6ff; outline-offset: 3px; } .ds-hud .ds-hud-lang { background: #ff4fa3; color: #07070d; box-shadow: 0 0 10px rgb(255 79 163 / 0.4); } .ds-hud-fx { font: inherit; background: none; padding: 8px; color: #3ddc68; border: 2px solid #3ddc68; box-shadow: 0 0 10px rgb(61 220 104 / 0.35); cursor: pointer; }"
+    },
+    {
+      "name": "World Tile",
+      "kind": "nav",
+      "refersTo": "world-tile",
+      "description": "Title-screen world selector; lifts with a yellow frame on hover/focus.",
+      "html": "<a class=\"ds-world\" href=\"#\"><span>1-1</span> TORMEL</a> <a class=\"ds-world ds-world--bonus\" href=\"#\"><span>BONUS</span> CONTACTO</a>",
+      "css": ".ds-world { display: inline-block; padding: 12px 16px; font-family: 'Press Start 2P', 'Fusion Pixel ZH', monospace; font-size: 16px; line-height: 1.5; text-transform: uppercase; text-decoration: none; background: #0d1033; border: 3px solid #2b4cff; color: #f4f4f8; transition: transform 160ms cubic-bezier(0.16, 1, 0.3, 1), border-color 120ms steps(2), background-color 120ms steps(2); } .ds-world span { color: #3fd6ff; } .ds-world:hover, .ds-world:focus-visible { border-color: #ffd23f; background: #151a4a; transform: translateY(-4px); box-shadow: 0 0 10px rgb(255 210 63 / 0.35); outline: none; } .ds-world--bonus { border-color: #ff4fa3; } .ds-world--bonus span { color: #ff4fa3; }"
+    },
+    {
+      "name": "Level Tile",
+      "kind": "custom",
+      "refersTo": "level-tile",
+      "description": "Architecture layer on the level map; unlit, lit and boss variants. The boss carries the lock sprite and a red name; \"JEFE\" is screen-reader-only.",
+      "html": "<div class=\"ds-tile\"><div class=\"ds-tile__name\"><span class=\"ds-tile__idx\">01</span><span>HTTP API</span></div><p>Axum handlers, typed DTOs.</p></div><div class=\"ds-tile ds-tile--lit\"><div class=\"ds-tile__name\"><span class=\"ds-tile__idx\">02</span><span>SERVICE LAYER</span></div><p>Domain rules.</p></div><div class=\"ds-tile ds-tile--boss\"><div class=\"ds-tile__name\"><svg width=\"24\" height=\"24\" viewBox=\"0 0 8 8\" shape-rendering=\"crispEdges\" aria-hidden=\"true\"><path fill=\"#ff4b3e\" d=\"M2 0h4v1H2zM1 1h1v2H1zM6 1h1v2H6z\"/><path fill=\"#b3261e\" d=\"M0 3h8v1H0zM0 4h1v3H0zM7 4h1v3H7zM0 7h8v1H0z\"/><path fill=\"#ffd23f\" d=\"M1 4h6v3H1z\"/><path fill=\"#07070d\" d=\"M3 5h2v2H3z\"/></svg><span><span class=\"ds-sr\">JEFE: </span>HASH CHAIN</span></div><p>SHA-256 hash chain.</p></div>",
+      "css": ".ds-tile { display: grid; gap: 10px; padding: 16px; margin-bottom: 16px; background: #07070d; border: 3px solid #151a4a; transition: border-color 200ms steps(3), box-shadow 200ms steps(3); } .ds-tile p { margin: 0; font-family: 'Atkinson Hyperlegible', system-ui, sans-serif; font-size: 15px; line-height: 1.5; color: #e3e4ee; } .ds-tile__name { display: grid; grid-template-columns: auto 1fr; align-items: start; gap: 10px; font-family: 'Press Start 2P', 'Fusion Pixel ZH', monospace; font-size: 16px; line-height: 1.5; text-transform: uppercase; color: #f4f4f8; } .ds-tile__idx { color: #9a9fbb; } .ds-tile--lit { border-color: #3fd6ff; box-shadow: 0 0 10px rgb(63 214 255 / 0.3); } .ds-tile--lit .ds-tile__idx { color: #3fd6ff; } .ds-tile--boss { border-color: #ff4b3e; box-shadow: 0 0 10px rgb(255 75 62 / 0.35); } .ds-tile--boss .ds-tile__name { color: #ff4b3e; } .ds-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Attract-Mode Cabinet",
+    "overview": "The portfolio is an arcade cabinet left running in attract mode. The ground is phosphor black, every surface is a deep-navy panel inside a square 3px pixel frame, and the light comes from the screen itself: a phosphor bloom on lit elements and a scanline overlay the visitor can switch off. Each section is a world with a code (1-1, 1-2, 2, BONUS), and the signature device is the level map. A project's architecture is a row of tiles, and a player sprite walks its request path as the visitor scrolls. The security challenge is the boss tile.\n\nTwo type voices share the screen and never trade jobs. The pixel caps face is the cabinet: HUD, marquee, world codes, labels, buttons. A highly legible humanist sans carries everything a recruiter actually reads. The world is playful, but it always yields to the content. Easter eggs (Konami power-up, typed commands, insert-coin credits, the firewall mini-game) reward curiosity and never gate a fact.\n\nThe world rejects the dark bento developer grid and the previous blueprint-drawing portfolio. Nothing here is rounded, blurred or glassy.",
+    "keyCharacteristics": [
+      "Phosphor-black ground, navy panels, 3px square pixel frames, zero radii.",
+      "A 16-colour cabinet palette where each hue has one job.",
+      "Pixel caps (Press Start 2P, Fusion Pixel ZH for Chinese) only at sizes on the 8px grid. Long text is set in Atkinson Hyperlegible.",
+      "Phosphor bloom and scanlines are one FX layer, and one HUD toggle turns both off.",
+      "Sprites are authored as palette-key pixel rows and rendered as crisp SVG at whole-pixel sizes.",
+      "Stepped motion: the level map scrubs with scroll, START blinks a few times and stops, and a player patrols the world row. All of it switches off under reduced motion."
+    ],
+    "rules": [
+      {
+        "name": "The One Job Rule",
+        "body": "Each hue means one thing: yellow is title and primary, cyan is link, focus and player, magenta is secondary, green is verified, red is security and threat, and gold is the power-up. A new element takes the hue of its job. It never picks a hue because that hue looks nice.",
+        "section": "colors"
+      },
+      {
+        "name": "The Gold Is Earned Rule",
+        "body": "Power-Up Gold appears only while the Konami power-up is active. It never ships in the resting state.",
+        "section": "colors"
+      },
+      {
+        "name": "The Pixel Grid Rule",
+        "body": "The pixel face is set only at whole multiples of its 8px grid (16, 24, 32, 48 and 80px), so every glyph pixel lands on a device pixel. No other sizes and no fluid clamps.",
+        "section": "typography"
+      },
+      {
+        "name": "The Two Voices Rule",
+        "body": "Pixel caps are for the cabinet: HUD, titles, labels, codes and buttons. Any sentence a recruiter must read is set in Atkinson Hyperlegible.",
+        "section": "typography"
+      },
+      {
+        "name": "The CJK Pixel Rule",
+        "body": "Chinese pixel text uses Fusion Pixel ZH, the 12px proportional face renamed with `size-adjust: 150%`, so that 16px text renders its 12px grid at exactly 2x. It sits in the same stack as Press Start 2P and is selected through unicode-range.",
+        "section": "typography"
+      },
+      {
+        "name": "The Bloom Follows FX Rule",
+        "body": "Every glow is written as `var(--bloom) <colour>`, never as a literal blur, so that switching FX off darkens the whole cabinet at once.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Light Not Lift Rule",
+        "body": "Elements are never raised with soft shadows. A state change shows as a frame colour change, a bloom or a stepped 2 to 4px translate.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Square Pixel Rule",
+        "body": "No border-radius anywhere. A round corner would break the pixel grid the whole cabinet is drawn on.",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "**Do** pick a colour by its job (The One Job Rule). Yellow is title and primary, cyan is link, focus and player, magenta is secondary, green is verified, red is threat.",
+      "**Do** set pixel type only at 16, 24, 32, 48 or 80px, and set all reading text in Atkinson Hyperlegible.",
+      "**Do** write every glow as `var(--bloom) <hue>` so the FX toggle governs it.",
+      "**Do** frame surfaces with square 3px borders (2px for small controls) and build depth from bevels.",
+      "**Do** author new pixel art as palette-key rows through the Sprite component at whole-pixel sizes.",
+      "**Do** use stepped transitions (`120ms steps(2)`) for state changes, give any blink a finite count, and make sure every animation stops under `prefers-reduced-motion`. Scripted reveals must render complete without JS.",
+      "**Do** add every new UI string to all four locales (es, ca, en, zh). `scripts/check-i18n.ts` fails the build when their shapes drift from Spanish."
+    ],
+    "donts": [
+      "**Don't** round a corner, blur a backdrop or cast a soft ambient shadow.",
+      "**Don't** set the pixel face at off-grid or fluid sizes, or use it for paragraphs.",
+      "**Don't** use Power-Up Gold outside the Konami power-up.",
+      "**Don't** use the hard ember offset anywhere except the marquee name.",
+      "**Don't** hide content behind play. Easter eggs reward curiosity, and every fact is reachable without them.",
+      "**Don't** fall back to the dark bento developer grid or the deleted blueprint-drawing look."
+    ]
+  }
+}

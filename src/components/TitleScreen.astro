@@ -1,0 +1,109 @@
+---
+import { dicts, type Locale } from '../i18n';
+import Sprite from './Sprite.astro';
+import { arrowDown, palette, player } from './sprites';
+
+interface Props {
+  locale: Locale;
+}
+const t = dicts[Astro.props.locale];
+---
+<section class="title wrap" aria-labelledby="title-name">
+  <div class="title__mast">
+    <h1 id="title-name" class="title__name px">Wenqiang<br />He</h1>
+    <p class="title__sub px">{t.title.subtitle}</p>
+    <p class="title__tag">{t.title.tagline}</p>
+    <p class="title__profile">{t.title.profile}</p>
+  </div>
+
+  <nav class="title__worlds" aria-label={t.title.worldsLabel}>
+    <!-- Attract mode: the player patrols the world row until the visitor picks one. -->
+    <div class="title__patrol" aria-hidden="true">
+      <Sprite class="title__walker" size={32} rows={player} colors={palette} />
+    </div>
+    <ol>
+      {t.worlds.map((w) => (
+        <li>
+          <a href={`#${w.id}`} class:list={['world', 'px', { 'world--bonus': w.code === 'BONUS' }]}>
+            <span class="world__code">{w.code}</span> {w.label}
+          </a>
+        </li>
+      ))}
+    </ol>
+  </nav>
+
+  <a class="btn title__start" href={`#${t.worlds[0].id}`}>
+    {t.title.start}
+    <Sprite class="title__arrow" size={16} rows={arrowDown} colors={palette} />
+  </a>
+  <p class="title__hint px">{t.eggs.hint}</p>
+</section>
+
+<style>
+  .title {
+    min-height: calc(100svh - var(--hud-h));
+    display: grid;
+    align-content: center;
+    justify-items: center;
+    gap: calc(var(--u) * 5);
+    padding-block: calc(var(--u) * 6);
+    text-align: center;
+  }
+  .title__mast { display: grid; justify-items: center; gap: calc(var(--u) * 3); }
+
+  /* Pixel caps at whole multiples of the face's 8px grid; red offset is the cabinet's drop, bloom its light. */
+  .title__name {
+    font-size: 2rem;
+    line-height: 1.15;
+    color: var(--yellow);
+    text-shadow: 4px 4px 0 var(--red-dark), var(--bloom) rgb(255 210 63 / 0.45);
+  }
+  @media (min-width: 560px) { .title__name { font-size: 3rem; text-shadow: 6px 6px 0 var(--red-dark), var(--bloom) rgb(255 210 63 / 0.45); } }
+  @media (min-width: 960px) { .title__name { font-size: 5rem; text-shadow: 8px 8px 0 var(--red-dark), var(--bloom) rgb(255 210 63 / 0.45); } }
+
+  .title__sub { color: var(--cyan); font-size: 1rem; line-height: 1.8; text-shadow: var(--bloom) rgb(63 214 255 / 0.4); }
+  .title__tag { max-width: 56ch; font-size: 1.1875rem; color: var(--text); }
+  .title__profile { color: var(--steel); font-size: 0.9375rem; }
+
+  .title__worlds { position: relative; width: 100%; padding-top: 40px; }
+  .title__worlds ol {
+    list-style: none; padding: 0;
+    display: grid; grid-template-columns: 1fr; gap: 8px;
+  }
+  /* Tiles size to their one-line label; whole tiles wrap, words never do. */
+  @media (min-width: 1100px) { .title__worlds ol { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; } .world { white-space: nowrap; } }
+  @media (min-width: 1100px) { .world { padding: 16px; } }
+
+  .title__patrol { position: absolute; left: 0; right: 0; top: 0; height: 32px; container-type: inline-size; }
+  .title__patrol :global(.title__walker) { animation: patrol 9s steps(36) infinite alternate; }
+  :global(html.no-scan) .title__patrol :global(.title__walker) { animation: none; }
+  @keyframes patrol { to { transform: translateX(calc(100cqw - 32px)); } }
+
+  .world {
+    display: block; height: 100%;
+    padding: 12px 16px;
+    font-size: 1rem; line-height: 1.5;
+    text-decoration: none; text-align: left;
+    background: var(--deep);
+    border: 3px solid var(--blue);
+    color: var(--white);
+    transition: transform 160ms var(--ease-out), border-color 120ms steps(2), background-color 120ms steps(2);
+  }
+  .world:hover, .world:focus-visible {
+    border-color: var(--yellow); background: var(--deep-2); transform: translateY(-4px);
+    box-shadow: var(--bloom) rgb(255 210 63 / 0.35);
+  }
+  .world__code { color: var(--cyan); }
+  .world--bonus { border-color: var(--magenta); }
+  .world--bonus .world__code { color: var(--magenta); }
+
+  .title__start :global(.title__arrow) { animation: blink 1.2s steps(1) 5; }
+  @keyframes blink { 50% { opacity: 0; } }
+  .title__hint { font-size: 1rem; color: var(--steel); }
+  /* Phones: START comes before the world list so the primary action stays in the first viewport. */
+  @media (max-width: 1099px) {
+    .title__start { order: 1; }
+    .title__worlds { order: 2; }
+    .title__hint { order: 3; }
+  }
+</style>

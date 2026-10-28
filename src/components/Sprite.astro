@@ -1,0 +1,29 @@
+---
+// Pixel sprite authored as rows of palette keys; '.' is transparent.
+interface Props {
+  rows: string[];
+  colors: Record<string, string>;
+  class?: string;
+  /** Rendered width in CSS px; height follows the sprite's aspect. */
+  size: number;
+  label?: string;
+}
+const { rows, colors, class: cls, label, size } = Astro.props;
+const w = rows[0].length;
+const h = rows.length;
+const cells = rows.flatMap((row, y) =>
+  [...row].map((k, x) => (k === '.' ? null : { x, y, fill: colors[k] })).filter((c) => c !== null),
+);
+---
+<svg
+  class={cls}
+  viewBox={`0 0 ${w} ${h}`}
+  width={size}
+  height={(size * h) / w}
+  shape-rendering="crispEdges"
+  role={label ? 'img' : undefined}
+  aria-label={label}
+  aria-hidden={label ? undefined : 'true'}
+>
+  {cells.map((c) => <rect x={c.x} y={c.y} width="1" height="1" fill={c.fill} />)}
+</svg>

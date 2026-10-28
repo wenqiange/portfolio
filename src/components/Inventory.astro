@@ -1,0 +1,56 @@
+---
+import type { Dict } from '../i18n/types';
+import Sprite from './Sprite.astro';
+import { palette, star } from './sprites';
+
+interface Props {
+  data: Dict['stack'];
+}
+const { data } = Astro.props;
+---
+<section id="stack" class="section" aria-labelledby="stack-title">
+  <div class="wrap">
+    <header class="section-head">
+      <h2 id="stack-title"><span class="code">{data.code}</span> {data.heading}</h2>
+    </header>
+
+    <div class="bag">
+      {data.groups.map((g) => (
+        <section class="bag__group panel" aria-label={g.name}>
+          <h3 class="bag__name px">
+            <Sprite size={16} rows={star} colors={palette} />
+            {g.name}
+          </h3>
+          <ul class="bag__rows">
+            {g.items.map((it) => <li>{it}</li>)}
+          </ul>
+        </section>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .bag { display: grid; gap: 16px; }
+  @media (min-width: 720px) { .bag { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (min-width: 1100px) { .bag { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+
+  .bag__group { padding: 20px 24px; }
+  .bag__name {
+    display: flex; align-items: center; gap: 12px;
+    font-size: 1rem; line-height: 1.5; color: var(--cyan);
+    padding-bottom: 12px; margin-bottom: 4px;
+    border-bottom: 2px solid var(--deep-2);
+  }
+  /* Rows like a cabinet's high-score list: names only, no invented levels. */
+  .bag__rows { list-style: none; padding: 0; columns: 2; column-gap: 24px; }
+  .bag__rows li {
+    break-inside: avoid;
+    padding: 8px 0;
+    border-bottom: 1px dashed var(--deep-2);
+    color: var(--white);
+    font-size: 1rem;
+    line-height: 1.35;
+  }
+  .bag__rows li:hover { color: var(--yellow); }
+</style>

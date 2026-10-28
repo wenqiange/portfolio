@@ -1,0 +1,57 @@
+---
+import type { Dict } from '../i18n/types';
+
+interface Props {
+  data: Dict['experience'];
+}
+const { data } = Astro.props;
+---
+<section id="experiencia" class="section" aria-labelledby="exp-title">
+  <div class="wrap">
+    <header class="section-head">
+      <h2 id="exp-title"><span class="code">{data.code}</span> {data.heading}</h2>
+    </header>
+
+    <ol class="runs">
+      {data.jobs.map((j) => (
+        <li class="run panel">
+          <div class="run__head">
+            <h3 class="run__role">{j.role}</h3>
+            <p class="run__company px">{j.company}</p>
+            <p class="run__period">{j.place} · {j.period}</p>
+          </div>
+          <div class="run__body">
+            {j.context && <p class="run__context">{j.context}</p>}
+            <ul class="run__points">
+              {j.points.map((pt) => <li>{pt}</li>)}
+            </ul>
+            <ul class="run__stack">
+              {j.stack.map((s) => <li class="chip">{s}</li>)}
+            </ul>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .runs { list-style: none; padding: 0; display: grid; gap: calc(var(--u) * 4); }
+  .run { display: grid; gap: calc(var(--u) * 4); padding: calc(var(--u) * 4) calc(var(--u) * 3); }
+  @media (min-width: 900px) {
+    .run { grid-template-columns: 300px 1fr; gap: calc(var(--u) * 6); padding: calc(var(--u) * 5); }
+  }
+  .run__head { display: grid; align-content: start; gap: 12px; }
+  .run__period { font-size: 0.9375rem; color: var(--steel); }
+  .run__role { font-size: 1.375rem; line-height: 1.3; color: var(--white); }
+  .run__company { font-size: 1rem; color: var(--yellow); line-height: 1.8; }
+  .run__body { display: grid; gap: calc(var(--u) * 3); }
+  .run__context { color: var(--white); max-width: 62ch; }
+  .run__points { display: grid; gap: 12px; padding-left: 0; list-style: none; }
+  .run__points li { position: relative; padding-left: 24px; max-width: 70ch; }
+  .run__points li::before {
+    content: ''; position: absolute; left: 0; top: 0.6em;
+    width: 8px; height: 8px; background: var(--magenta);
+  }
+  .run__stack { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+</style>
